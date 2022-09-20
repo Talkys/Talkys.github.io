@@ -23,3 +23,5 @@ if(plt.indexOf(lns == -1) && plt.indexOf(wns) != -1) {
         lnel[i].style.display = "block";
     }
 }
+
+document.getElementById("platform").innerText = plt;
