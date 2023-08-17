@@ -17,11 +17,9 @@ if(plt.indexOf(lns != -1) && plt.indexOf(wns) == -1) {
     
 }
 
-if(plt.indexOf(lns == -1) && plt.indexOf(wns) != -1) {
-    var lnel = document.getElementsByClassName("windowsexclusive");
-    for (let i = 0; i < lnel.length; i++) {
-        lnel[i].style.display = "block";
-    }
+var gen = document.getElementsByClassName("general");
+for (let i = 0; i < gen.length; i++) {
+    gen[i].style.display = "block";
 }
 
 document.getElementById("platform").innerText = plt;
