@@ -40,6 +40,13 @@ const projects = [
         title: 'BrailleArtify',
         description: 'Image to text generator made in golang',
         link: 'https://github.com/Talkys/BrailleArtify'
+    },
+    {
+        platform: 'linuxexclusive',
+        image: '/img/quantum_bkg.png',
+        title: 'Quantum Console',
+        description: 'Educational quantum circuit simulator',
+        link: 'https://github.com/Talkys/Quantum-Console'
     }
     /*
     {
