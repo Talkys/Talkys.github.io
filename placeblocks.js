@@ -21,6 +21,20 @@ const projects = [
         link: 'https://github.com/Talkys/ZuimOS'
     },
     {
+        platform: 'general',
+        image: '/img/BrailleArtify.png',
+        title: 'BrailleArtify',
+        description: 'Image to text generator made in golang',
+        link: 'https://github.com/Talkys/BrailleArtify'
+    },
+    {
+        platform: 'general',
+        image: '/img/quantum_bkg.png',
+        title: 'Quantum Console',
+        description: 'Educational quantum circuit simulator',
+        link: 'https://github.com/Talkys/Quantum-Console'
+    },
+    {
         platform: 'linuxexclusive',
         image: '/img/amogOS_bkg.png',
         title: 'AmogOS',
@@ -33,20 +47,6 @@ const projects = [
         title: 'Alton\'s Journey',
         description: 'Simple mobile game made as a graduation project',
         link: 'https://github.com/Talkys/Alton-s-Journey'
-    },
-    {
-        platform: 'linuxexclusive',
-        image: '/img/BrailleArtify.png',
-        title: 'BrailleArtify',
-        description: 'Image to text generator made in golang',
-        link: 'https://github.com/Talkys/BrailleArtify'
-    },
-    {
-        platform: 'linuxexclusive',
-        image: '/img/quantum_bkg.png',
-        title: 'Quantum Console',
-        description: 'Educational quantum circuit simulator',
-        link: 'https://github.com/Talkys/Quantum-Console'
     }
     /*
     {
