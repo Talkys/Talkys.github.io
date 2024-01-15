@@ -2,17 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/Talkys/Talkys.github.io/tree/main/blog/posts/introduction/</loc>
+    <loc>/blog/posts/introduction/</loc>
     <lastmod>2024-01-15T12:24:41-03:00</lastmod>
   </url><url>
-    <loc>/Talkys/Talkys.github.io/tree/main/blog/posts/</loc>
+    <loc>/blog/posts/</loc>
     <lastmod>2024-01-15T12:24:41-03:00</lastmod>
   </url><url>
-    <loc>/Talkys/Talkys.github.io/tree/main/blog/</loc>
+    <loc>/blog/</loc>
     <lastmod>2024-01-15T12:24:41-03:00</lastmod>
   </url><url>
-    <loc>/Talkys/Talkys.github.io/tree/main/blog/categories/</loc>
+    <loc>/blog/categories/</loc>
   </url><url>
-    <loc>/Talkys/Talkys.github.io/tree/main/blog/tags/</loc>
+    <loc>/blog/tags/</loc>
   </url>
 </urlset>
