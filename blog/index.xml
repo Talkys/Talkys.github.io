@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Talkys Blog</title>
-    <link>Talkys.github.io/</link>
+    <link>/Talkys/Talkys.github.io/tree/main/blog/</link>
     <description>Recent content on Talkys Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Jan 2024 12:24:41 -0300</lastBuildDate>
-    <atom:link href="Talkys.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/Talkys/Talkys.github.io/tree/main/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Introduction</title>
-      <link>Talkys.github.io/posts/introduction/</link>
+      <link>/Talkys/Talkys.github.io/tree/main/blog/posts/introduction/</link>
       <pubDate>Mon, 15 Jan 2024 12:24:41 -0300</pubDate>
-      <guid>Talkys.github.io/posts/introduction/</guid>
+      <guid>/Talkys/Talkys.github.io/tree/main/blog/posts/introduction/</guid>
       <description>This is a silly blog created to express my opinion about the world of computing. The idea of starting a blog is purely to relax my mind while writing something that maybe someone out there finds interesting.&#xA;I don&amp;rsquo;t have an orthodox mind when it comes to technology, and most of the time, I find myself complaining about how things work, how they should work, and how I would implement them (even if I never will).</description>
     </item>
   </channel>
