@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/blog/posts/introduction/</loc>
-    <lastmod>2024-01-15T12:24:41-03:00</lastmod>
+    <loc>/blog/posts/github_pages_and_paths/</loc>
+    <lastmod>2024-01-16T11:24:22-03:00</lastmod>
   </url><url>
     <loc>/blog/posts/</loc>
-    <lastmod>2024-01-15T12:24:41-03:00</lastmod>
+    <lastmod>2024-01-16T11:24:22-03:00</lastmod>
   </url><url>
     <loc>/blog/</loc>
+    <lastmod>2024-01-16T11:24:22-03:00</lastmod>
+  </url><url>
+    <loc>/blog/posts/introduction/</loc>
     <lastmod>2024-01-15T12:24:41-03:00</lastmod>
   </url><url>
     <loc>/blog/categories/</loc>
