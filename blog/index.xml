@@ -6,8 +6,15 @@
     <description>Recent content on Talkys Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jan 2024 12:24:41 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jan 2024 11:24:22 -0300</lastBuildDate>
     <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github pages and paths</title>
+      <link>/blog/posts/github_pages_and_paths/</link>
+      <pubDate>Tue, 16 Jan 2024 11:24:22 -0300</pubDate>
+      <guid>/blog/posts/github_pages_and_paths/</guid>
+      <description>While setting this blog I had a big trouble getting the file paths the right way. I don&amp;rsquo;t want to link hugo to my github, so uploading the static files should be fine, but getting the baseURL to work was a nightmare. The photophobia theme that I&amp;rsquo;m using right now is a pain to set up. But at least I&amp;rsquo;ve managed to get it to work by trial and error as I could not find any documentation for working like that.</description>
+    </item>
     <item>
       <title>Introduction</title>
       <link>/blog/posts/introduction/</link>
