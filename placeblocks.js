@@ -47,6 +47,20 @@ const projects = [
         title: 'Alton\'s Journey',
         description: 'Simple mobile game made as a graduation project',
         link: 'https://github.com/Talkys/Alton-s-Journey'
+    },
+    {
+        platform: 'linuxexclusive',
+        image: '/img/dither.png',
+        title: 'Dither Filter',
+        description: 'Color mapping tool',
+        link: 'https://github.com/Talkys/Dither-Filter'
+    },
+    {
+        platform: 'linuxexclusive',
+        image: '/img/donut.webp',
+        title: 'Donut',
+        description: 'The classic rotating donut',
+        link: 'https://github.com/Talkys/donut'
     }
     /*
     {
@@ -61,7 +75,7 @@ const projects = [
 
 function generateProjectBlock(project, index) {
     return `
-        <div role="listitem" class="wrapper w-dyn-item ${project.platform}" style="display: none;">
+        <div role="listitem" class="wrapper w-dyn-item general" style="display: none;">
             <div style="background-image:url(&quot;${project.image}&quot;)"
                 class="column background-image">
                 <div class="column _100vh">
