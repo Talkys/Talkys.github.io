@@ -5,21 +5,19 @@ var plt = navigator.platform;
 
 var mc = atob("bWFpbi1jb250ZW50");
 
-if(plt.indexOf(lns) != -1 || plt.indexOf(wns) != -1){
-    document.getElementById(mc).style.display = "block";
-}
-
-if(plt.indexOf(lns != -1) && plt.indexOf(wns) == -1) {
-    var lnel = document.getElementsByClassName("linuxexclusive");
-    for (let i = 0; i < lnel.length; i++) {
-        lnel[i].style.display = "block";
-    }
-    
-}
-
+document.getElementById(mc).style.display = "block";
 var gen = document.getElementsByClassName("general");
 for (let i = 0; i < gen.length; i++) {
     gen[i].style.display = "block";
 }
 
-document.getElementById("platform").innerText = plt;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isSafari)
+    {
+        window.location.href = '/fallback.html'
+    }
+    
+})
