@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <script src="particles.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
         href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
         rel="stylesheet">
@@ -24,38 +24,101 @@
             font-weight: 600;
             font-style: normal;
         }
+
+        /* By default, hide one of the divs. Here, we'll hide the landscape content */
+        #landscape {
+            display: none;
+        }
+
+        /* This media query applies when the screen is in portrait mode */
+        @media (orientation: portrait) {
+            #portrait {
+                display: block; /* Show portrait content */
+            }
+            #landscape {
+                display: none;  /* Hide landscape content */
+            }
+        }
+
+        /* This media query applies when the screen is in landscape mode */
+        @media (orientation: landscape) {
+            #portrait {
+                display: none; /* Hide portrait content */
+            }
+            #landscape {
+                display: block; /* Show landscape content */
+            }
+        }
     </style>
 </head>
 
 <body class="w-full bg-black">
-    <div class="h-screen w-full">
-        <div class="h-screen w-full bg-0 pl-18 pr-18 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
-            <div class="h-full w-full backdrop-blur-[3px]">
-                <div class="h-full w-3/4 flex flex-col justify-center">
-                    <h1 class="text-white text-[7rem] newsreader-title">Tallys Assis</h1>
-                    <h4 class="text-white text-[3.5rem] wrap newsreader-title">Professional Developer and<br>Bachelor of Computer Science</h4>
-                    <h5 class="text-white text-[1.75rem] newsreader-title">Scroll down to check my projects</h5>
-                    <p class="text-white">Page under construction.</p>
+    <div id="landscape">
+        <div class="h-screen w-full overflow-hidden">
+            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
+                <div class="h-full w-full backdrop-blur-[3px]">
+                    <div class="h-full w-full flex flex-col items-start pl-18 justify-center gap-4">
+                        <h1 class="text-white text-9xl newsreader-title">Tallys Assis</h1>
+                        <h4 class="text-white text-7xl newsreader-title">Professional Developer and<br>Bachelor of Computer Science</h4>
+                        <h5 class="text-white text-3xl newsreader-title">Scroll down to check my projects</h5>
+                        <p class="text-white">Page under construction.</p>
+                    </div>
                 </div>
+                
             </div>
-            
+        </div>
+
+        <div id="project-area-l" class="w-full"></div>
+
+        <div class="h-screen w-full overflow-hidden">
+            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
+                <div class="h-full w-full backdrop-blur-[3px]">
+                    <div class="h-full w-full flex flex-col pl-18 justify-center gap-4">
+                        <h3 class="text-white text-5xl newsreader-title">You can check more stuff here:</h3>
+                        <a href="https://www.linkedin.com/in/tallys-assis-271631197/" class="text-white text-3xl newsreader-title hover:underline">Linkedin</a>
+                        <a href="https://canecashub.blogspot.com/" class="text-white text-3xl newsreader-title hover:underline">CanecasHUB</a>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </div>
 
-    <div id="project-area" class="w-full"></div>
-   
-    <div class="h-screen w-full">
-        <div class="h-screen w-full bg-0 pl-18 pr-18 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
-            <div class="h-full w-full backdrop-blur-[3px]">
-                <div class="h-full w-full flex flex-col justify-center w-3/4">
-                    <h3 class="text-white text-[1.5rem] newsreader-title">You can check more stuff here:</h3>
-                    <a href="https://www.linkedin.com/in/tallys-assis-271631197/" class="text-white text-[1rem] newsreader-title hover:underline">Linkedin</a>
-                    <a href="https://canecashub.blogspot.com/" class="text-white text-[1rem] newsreader-title hover:underline">CanecasHUB</a>
+    <div id="portrait">
+        <div class="h-screen w-full overflow-hidden">
+            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
+                <div class="h-full w-full backdrop-blur-[3px]">
+                    <div class="h-full w-full flex flex-col items-center justify-center gap-5">
+                        <h1 class="text-white text-6xl newsreader-title">Tallys Assis</h1>
+                        <h4 class="text-white text-2xl newsreader-title text-center">Professional Developer and<br>Bachelor of Computer Science</h4>
+                        <h5 class="text-white text-xl newsreader-title">Scroll down to check my projects</h5>
+                        <p class="text-white">Page under construction.</p>
+                    </div>
                 </div>
+                
             </div>
-            
+        </div>
+
+        <div id="project-area-p" class="w-full"></div>
+
+        <div class="h-screen w-full overflow-hidden">
+            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
+                <div class="h-full w-full backdrop-blur-[3px]">
+                    <div class="h-full w-full flex flex-col items-center justify-center gap-4">
+                        <h3 class="text-white text-[1.5rem] newsreader-title text-center">You can check more stuff here:</h3>
+                        <a href="https://www.linkedin.com/in/tallys-assis-271631197/" class="text-white text-[1rem] newsreader-title hover:underline">Linkedin</a>
+                        <a href="https://canecashub.blogspot.com/" class="text-white text-[1rem] newsreader-title hover:underline">CanecasHUB</a>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     </div>
+    
+
+    
+   
+    
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -80,17 +143,28 @@
         ]
 
         projects.forEach((project) => {
-            document.getElementById('project-area').innerHTML += `
-                <div class="h-screen w-full flex flex-row bg-[url('${project.image}')] bg-fixed bg-cover bg-center bg-no-repeat">
-                <div class="flex flex-col justify-center w-1/2 min-w-[720px] h-full pl-18 pr-18 bg-black/[70%]">
-                    <h2 class="text-white text-[5rem] newsreader-title">${project.title}</h2>
-                    <h2 class="text-white text-[1.6rem] newsreader-title">${project.description}</h2>
-                    <a href="${project.link}" class="text-white text-[1.5rem] underline newsreader-title">Check it here</a>
+            document.getElementById('project-area-l').innerHTML += `
+                <div class="h-screen w-screen flex flex-row bg-[url('${project.image}')] bg-fixed bg-cover bg-center bg-no-repeat overflow-hidden">
+                <div class="flex flex-col items-start justify-center pl-18 pr-18 h-full w-2/5 gap-5 bg-black/[70%]">
+                    <h2 class="text-white text-7xl wrap newsreader-title">${project.title}</h2>
+                    <h2 class="text-white text-3xl wrap newsreader-title">${project.description}</h2>
+                    <a href="${project.link}" class="text-white wrap text-[1.5rem] underline newsreader-title">Check it here</a>
                 </div
             `
         })
+
+        projects.forEach((project) => { //portrait
+            document.getElementById('project-area-p').innerHTML += `
+                <div class="h-screen w-screen flex flex-row bg-[url('${project.image}')] bg-fixed bg-cover bg-center bg-no-repeat overflow-hidden">
+                <div class="flex flex-col items-center justify-center h-full w-full pl-5 pr-5 bg-black/[70%]">
+                    <h2 class="text-white text-5xl wrap newsreader-title text-center">${project.title}</h2>
+                    <h2 class="text-white text-2xl wrap newsreader-title text-center">${project.description}</h2>
+                    <a href="${project.link}" class="text-white wrap text-[1.5rem] underline newsreader-title">Check it here</a>
+                </div
+            `
+        })
+            
     })
-    
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </html>
