@@ -1,170 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    
-    <script src="particles.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
-        rel="stylesheet">
-    <title>Document</title>
-    <style>
-        /* This is the general rule for other browsers, which Firefox will ignore */
-        body::-webkit-scrollbar {
-            display: none;
-        }
-
-        .newsreader-title {
-            font-family: "Newsreader", serif;
-            font-optical-sizing: auto;
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        /* By default, hide one of the divs. Here, we'll hide the landscape content */
-        #landscape {
-            display: none;
-        }
-
-        /* This media query applies when the screen is in portrait mode */
-        @media (orientation: portrait) {
-            #portrait {
-                display: block; /* Show portrait content */
-            }
-            #landscape {
-                display: none;  /* Hide landscape content */
-            }
-        }
-
-        /* This media query applies when the screen is in landscape mode */
-        @media (orientation: landscape) {
-            #portrait {
-                display: none; /* Hide portrait content */
-            }
-            #landscape {
-                display: block; /* Show landscape content */
-            }
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Tallys Assis</title>
 </head>
-
-<body class="w-full bg-black">
-    <div id="landscape">
-        <div class="h-screen w-full overflow-hidden">
-            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
-                <div class="h-full w-full backdrop-blur-[3px]">
-                    <div class="h-full w-full flex flex-col items-start pl-18 justify-center gap-4">
-                        <h1 class="text-white text-9xl newsreader-title">Tallys Assis</h1>
-                        <h4 class="text-white text-7xl newsreader-title">Professional Developer and<br>Bachelor of Computer Science</h4>
-                        <h5 class="text-white text-3xl newsreader-title">Scroll down to check my projects</h5>
-                        <p class="text-white">Page under construction.</p>
-                    </div>
-                </div>
-                
+<body class="bg-gray-900">
+    <div class="h-screen w-full overflow-x-hidden bg-gray-800 flex flex-row items-center justify-center p-6 flex-wrap-reverse">
+        <div class="flex-grow-1 p-16 md:p-1 text-center flex flex-col">
+            <h1 class="text-white text-6xl font-bold drop-shadow-md/50">Tallys Assis</h1>
+            <h3 class="text-white text-2xl font-bold mt-8 drop-shadow-md/50" id="title-phrase">Professional developer</h3>
+            <div class="flex flex-row gap-4 justify-center mt-4">
+                <a href="https://github.com/Talkys" class="hover:drop-shadow-md/100 drop-shadow-white cursor-pointer"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Github" class="max-w-16 invert drop-shadow-md/50"></a>
+                <a href="https://www.linkedin.com/in/tallys-assis-271631197/" class="hover:drop-shadow-md/100 drop-shadow-white cursor-pointer"><img src="./img/linkedin.png" alt="Github" class="max-w-16 drop-shadow-md/50"></a>
+                <a href="mailto:tallys.assis@gmail.com" class="hover:drop-shadow-md/100 drop-shadow-white cursor-pointer"><img src="./img/mail.png" alt="Github" class="max-w-16 drop-shadow-md/50 invert"></a>
             </div>
         </div>
+        <div class="flex-grow-1 p-16 flex flex-col items-center">
+            <img src="./img/Tallys_Souza01.png" alt="Perfil" class="w-100 max-w-[100%] rounded-full drop-shadow-xl/100">
+        </div>
+        
+    </div>
+    <div class="w-full flex flex-col p-16 pt-8 gap-8">
+        <div class="w-full text-center">
+            <h1 class="text-white text-4xl font-bold">My projects</h1>
+        </div>
+        <div class="flex flex-row flex-wrap gap-16 justify-center" id="project-container">
 
-        <div id="project-area-l" class="w-full"></div>
-
-        <div class="h-screen w-full overflow-hidden">
-            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
-                <div class="h-full w-full backdrop-blur-[3px]">
-                    <div class="h-full w-full flex flex-col pl-18 justify-center gap-4">
-                        <h3 class="text-white text-5xl newsreader-title">You can check more stuff here:</h3>
-                        <a href="https://www.linkedin.com/in/tallys-assis-271631197/" class="text-white text-3xl newsreader-title hover:underline">Linkedin</a>
-                        <a href="https://canecashub.blogspot.com/" class="text-white text-3xl newsreader-title hover:underline">CanecasHUB</a>
-                    </div>
-                </div>
-                
-            </div>
         </div>
     </div>
-
-    <div id="portrait">
-        <div class="h-screen w-full overflow-hidden">
-            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
-                <div class="h-full w-full backdrop-blur-[3px]">
-                    <div class="h-full w-full flex flex-col items-center justify-center gap-5">
-                        <h1 class="text-white text-6xl newsreader-title">Tallys Assis</h1>
-                        <h4 class="text-white text-2xl newsreader-title text-center">Professional Developer and<br>Bachelor of Computer Science</h4>
-                        <h5 class="text-white text-xl newsreader-title">Scroll down to check my projects</h5>
-                        <p class="text-white">Page under construction.</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div id="project-area-p" class="w-full"></div>
-
-        <div class="h-screen w-full overflow-hidden">
-            <div class="h-screen w-full bg-0 bg-[url(/img/particle_network.gif)] bg-center bg-cover bg-fixed">
-                <div class="h-full w-full backdrop-blur-[3px]">
-                    <div class="h-full w-full flex flex-col items-center justify-center gap-4">
-                        <h3 class="text-white text-[1.5rem] newsreader-title text-center">You can check more stuff here:</h3>
-                        <a href="https://www.linkedin.com/in/tallys-assis-271631197/" class="text-white text-[1rem] newsreader-title hover:underline">Linkedin</a>
-                        <a href="https://canecashub.blogspot.com/" class="text-white text-[1rem] newsreader-title hover:underline">CanecasHUB</a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
+    <div class="bg-gray-950 w-full p-16">
+        <h1 class="text-white text-4xl font-bold" id="about-me-title">About me</h1>
+        <p class="text-lg text-white mt-3" id="about-me-section">
+            I’m a software developer with a background that spans from .NET banking systems to my current role
+            building Python applications in the engineering sector. Most of my work centers on Flask, SQL, and Typescript,
+            with the occasional dive into C. I also manage Linux-based infrastructure and deployment, giving me a full
+            view of the development flow from code to production.
+            <br><br>
+            I enjoy creating robust solutions that replace costly commercial tools with tailored, efficient software.
+            My guiding principle is simple: never let a “temporary fix” become permanent. I'm also starting a embedded
+            development portfolio soon.
+            <br><br>
+            Outside of work, I spend my time gaming, writing, and going to heavy metal shows. I’m also a proud ThinkPad
+            enthusiast.
+        </p>
     </div>
-    
+    <script>
+        function getDescription(project) {
+            // Check the browser's language property
+            // `navigator.userLanguage` is a fallback for older IE versions
+            const userLang = Intl.DateTimeFormat().resolvedOptions().locale
 
-    
-   
-    
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-
-        const userAgent = navigator.userAgent;
-        const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
-
-        if (isSafari) {
-            window.location.href = '/fallback.html'
+            // Check if the user's language is Portuguese (Brazil)
+            if (userLang === 'pt-BR') {
+                return project.description.pt;
+            }
+            // Otherwise, default to English
+            return project.description.en;
         }
+        document.addEventListener("DOMContentLoaded", () => {
+            const userAgent = navigator.userAgent;
+            const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
 
-        const projects = [
-        { "title": "Creeps", "link": "https://github.com/Talkys/Creeps", "image": "/img/creeps_bkg.png", "description": "My first complete project. Just a flatpak test for the godot 2d trutorial." },
-        { "title": "Auto Dungeon", "link": "https://github.com/Talkys/Auto-Dungeon", "image": "/img/autodungeon_bkg.png", "description": "A random dungeon generator made in go and python" },
-        { "title": "ZuimOS", "link": "https://github.com/Talkys/ZuimOS", "image": "/img/zuimOS_bkg.png", "description": "A simple operating system made as a graduation project" },
-        { "title": "BrailleArtify", "link": "https://github.com/Talkys/BrailleArtify", "image": "/img/BrailleArtify.png", "description": "Image to text generator made in golang" },
-        { "title": "Quantum Console", "link": "https://github.com/Talkys/Quantum-Console", "image": "/img/quantum_bkg.png", "description": "Educational quantum circuit simulator" },
-        { "title": "AmogOS", "link": "https://github.com/Talkys/AmogOS", "image": "/img/amogOS_bkg.png", "description": "My first operating system" },
-        { "title": "Alton's Journey", "link": "https://github.com/Talkys/Alton-s-Journey", "image": "/img/alton_bkg.png", "description": "Simple mobile game made as a graduation project" },
-        { "title": "Dither Filter", "link": "https://github.com/Talkys/Dither-Filter", "image": "/img/dither.png", "description": "Color mapping tool" },
-        { "title": "Donut", "link": "https://github.com/Talkys/donut", "image": "/img/donut.webp", "description": "The classic rotating donut" }
-        ]
+            if (isSafari) {
+                window.location.href = '/fallback.html'
+            }
 
-        projects.forEach((project) => {
-            document.getElementById('project-area-l').innerHTML += `
-                <div class="h-screen w-screen flex flex-row bg-[url('${project.image}')] bg-fixed bg-cover bg-center bg-no-repeat overflow-hidden">
-                <div class="flex flex-col items-start justify-center pl-18 pr-18 h-full w-2/5 gap-5 bg-black/[70%]">
-                    <h2 class="text-white text-7xl wrap newsreader-title">${project.title}</h2>
-                    <h2 class="text-white text-3xl wrap newsreader-title">${project.description}</h2>
-                    <a href="${project.link}" class="text-white wrap text-[1.5rem] underline newsreader-title">Check it here</a>
-                </div
-            `
-        })
+            const language = Intl.DateTimeFormat().resolvedOptions().locale
+            const projects = [{
+            name: "Quantum Console",
+            image: "./img/atom.png",
+            description: {
+                en: "Quantum computing simulator made in C++",
+                pt: "Simulador de computação quântica feito em C++"
+            }
+            }, {
+            name: "Dither filter",
+            image: "./img/image.png",
+            description: {
+                en: "A color map filter with dithering made in Go",
+                pt: "Um filtro de mapa de cores com dithering feito em Go"
+            }
+            }, {
+            name: "Braille Artify",
+            image: "./img/braille.png",
+            description: {
+                en: "An img to text program capable of playing videos in cli made in Go",
+                pt: "Um programa de imagem para texto capaz de reproduzir vídeos em cli, feito em Go"
+            }
+            }, {
+            name: "Auto Dungeon",
+            image: "./img/tiles.png",
+            description: {
+                en: "Basic tile dungeon generator made in Go and Python for dungeon masters",
+                pt: "Gerador básico de masmorras de azulejo feito em Go e Python para mestres de masmorras"
+            }
+            }, {
+            name: "ZuimOS",
+            image: "./img/monitor.png",
+            description: {
+                en: "Basic operating system made on graduation with simple commands",
+                pt: "Sistema operacional básico feito na graduação com comandos simples"
+            }
+            }, {
+            name: "AmogOS",
+            image: "./img/amogus.png",
+            description: {
+                en: "Very basic bootable program that display the amogus meme",
+                pt: "Programa inicializável muito básico que exibe o meme amogus"
+            }
+            }, {
+            name: "Donut",
+            image: "./img/donut.png",
+            description: {
+                en: "The classic donut made in many languages",
+                pt: "O clássico donut feito em várias linguagens"
+            }
+            }, {
+            name: "Alton's Journey",
+            image: "./img/unity.png",
+            description: {
+                en: "Simple Android game made on graduation using Unity",
+                pt: "Jogo simples para Android feito na graduação usando Unity"
+            }
+            }, {
+            name: "Creeps",
+            image: "./img/godot.png",
+            description: {
+                en: "Flatpak version of the creeps game and implemented code for Godot",
+                pt: "Versão Flatpak do jogo creeps e código implementado para Godot"
+            }
+            }];
 
-        projects.forEach((project) => { //portrait
-            document.getElementById('project-area-p').innerHTML += `
-                <div class="h-screen w-screen flex flex-row bg-[url('${project.image}')] bg-fixed bg-cover bg-center bg-no-repeat overflow-hidden">
-                <div class="flex flex-col items-center justify-center h-full w-full pl-5 pr-5 bg-black/[70%]">
-                    <h2 class="text-white text-5xl wrap newsreader-title text-center">${project.title}</h2>
-                    <h2 class="text-white text-2xl wrap newsreader-title text-center">${project.description}</h2>
-                    <a href="${project.link}" class="text-white wrap text-[1.5rem] underline newsreader-title">Check it here</a>
-                </div
-            `
-        })
+            const container = document.getElementById("project-container")
+            container.innerHTML = "";
+            projects.forEach((project) => {
+                const block = document.createElement("div");
+                block.className = "h-90 w-80 bg-gray-950 rounded-3xl hover:brightness-110 hover:drop-shadow-xl/100 drop-shadow-white cursor-pointer flex flex-col items-center gap-4 p-6";
+                
+                const title = document.createElement("h3");
+                title.className = "text-2xl font-bold text-white";
+                title.innerText = project.name;
+
+                const image = document.createElement("img")
+                image.className = "h-40 invert-70";
+                image.src = project.image;
+                image.alt = project.name;
+
+                const description = document.createElement("p");
+                description.className = "text-md text-white text-center";
+                description.innerText = getDescription(project);
+
+                block.appendChild(title);
+                block.appendChild(image);
+                block.appendChild(description);
+
+                container.appendChild(block);
+            })
+
             
-    })
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+            const about_me = document.getElementById('about-me-section');
+            const about_title = document.getElementById('about-me-title');
+            const title_phrase = document.getElementById('title-phrase')
+
+            switch (language) {
+                case 'pt-BR':
+                    about_me.innerHTML = `
+                        Sou um desenvolvedor de software com experiência que vai desde sistemas bancários em .NET até meu trabalho atual,
+                        onde desenvolvo aplicativos em Python para o setor de engenharia. A maior parte do meu trabalho se concentra em Flask,
+                        SQL e TypeScript, com incursões ocasionais em C. Também gerencio infraestrutura e implantação baseada em Linux,
+                        tendo uma visão completa do fluxo de desenvolvimento, do código à produção.
+                        <br><br>
+                        Gosto de criar soluções robustas que substituem ferramentas comerciais caras por softwares eficientes e personalizados.
+                        Meu princípio é simples: nunca deixar que uma "solução temporária" se torne permanente.
+                        Em breve, também começarei a montar um portfólio de desenvolvimento embarcado.
+                        <br><br>
+                        Fora do trabalho, passo meu tempo jogando, escrevendo ou indo a shows de heavy metal.
+                        Também sou um orgulhoso fã de ThinkPads.
+                    `
+
+                    about_title.innerText = 'Sobre mim'
+                    title_phrase.innerText = 'Desenvolvedor profissional'
+                    break;
+            
+                default:
+                    break;
+            }
+        })
+    </script>
+</body>
 </html>
