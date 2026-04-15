@@ -225,7 +225,7 @@ a:hover {
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .blueprint-desc {
@@ -346,5 +346,70 @@ a:hover {
         height: 200px;
         border-right: none;
         border-bottom: 1px solid var(--border-color);
+    }
+}
+
+/* =========================================
+   2D. MICRO-PROJECTS GRID
+   ========================================= */
+.micro-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.micro-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s ease;
+}
+
+.micro-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.micro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.micro-header h3 {
+    font-size: 1.25rem;
+}
+
+.micro-header a {
+    text-decoration: none;
+    font-size: 0.85em;
+}
+
+/* Make sure description doesn't push the tech-stack down unevenly */
+.micro-card .blueprint-desc {
+    margin: 10px 0 25px 0;
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   UPDATE TO RESPONSIVE MEDIA QUERY
+   ========================================= */
+@media (max-width: 768px) {
+    .blueprint-card {
+        flex-direction: column;
+    }
+    .blueprint-visual {
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    /* Add this to force 1-column on mobile */
+    .micro-grid {
+        grid-template-columns: 1fr;
     }
 }
