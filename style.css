@@ -1,0 +1,350 @@
+
+/* 1. VISUAL IDENTITY & THEME VARIABLES */
+:root {
+    --bg-dark: #0d1117; /* True Dark / Deep Navy */
+    --panel-bg: #161b22; /* Glassmorphism Lite base */
+    --border-color: #30363d;
+    --accent: #00e5ff; /* Electric Blue */
+    --accent-glow: rgba(0, 229, 255, 0.4);
+    --text-main: #c9d1d9;
+    --text-heading: #ffffff;
+    --text-muted: #8b949e;
+}
+
+/* 4. CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* 3. TYPOGRAPHY */
+h1, h2, h3 {
+    color: var(--text-heading);
+    font-weight: 700;
+    margin: 0;
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+
+.mono {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* 2A. THE "DASHBOARD" HEADER */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 80px;
+    padding: 40px;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.header-left {
+    flex: 1 1 400px;
+}
+
+/* Status Indicator with Pulse */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.2);
+}
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(0, 229, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+}
+
+.header-left h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.header-left p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 500px;
+}
+
+.header-right {
+    flex: 1 1 300px;
+}
+
+.header-right h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-right h3::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--text-muted);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Glowing Badges */
+.tech-badge {
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-main);
+    background: transparent;
+    cursor: default;
+    transition: all 0.3s ease;
+}
+.tech-badge:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow), inset 0 0 10px var(--accent-glow);
+}
+
+/* 2B. PROJECT "BLUEPRINTS" */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.blueprint-card {
+    display: flex;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+/* Hover "Power On" Effect */
+.blueprint-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Blueprint Grid Pattern */
+.blueprint-visual {
+    flex: 0 0 35%;
+    border-right: 1px solid var(--border-color);
+    background-color: #0b0f14;
+    background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+.blueprint-visual img {
+    width: 80%;
+    opacity: 0.7;
+    filter: grayscale(100%) contrast(120%);
+    transition: opacity 0.3s;
+}
+
+.blueprint-card:hover .blueprint-visual img {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+.blueprint-content {
+    padding: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blueprint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.blueprint-desc {
+    color: var(--text-muted);
+    margin: 20px 0;
+}
+
+/* Integrated Hardware Specs */
+.hw-specs {
+    background: rgba(0,0,0,0.3);
+    border-left: 2px solid var(--accent);
+    padding: 15px;
+    min-width: 200px;
+    border-radius: 0 4px 4px 0;
+}
+
+.hw-specs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hw-specs li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 4px;
+}
+.hw-specs li:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.spec-label { color: var(--text-muted); }
+.spec-val { color: var(--accent); }
+
+/* 2C. THE "LOGIC FLOW" (Experience) */
+.logic-flow {
+    position: relative;
+    padding-left: 40px;
+    margin-top: 40px;
+}
+
+/* The vertical accent line */
+.logic-flow::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: var(--accent);
+}
+
+.logic-node {
+    position: relative;
+    margin-bottom: 50px;
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 8px;
+}
+
+/* The "Bits" (Nodes) */
+.logic-node::before {
+    content: '';
+    position: absolute;
+    left: -41px; /* Center on the vertical line */
+    top: 30px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg-dark);
+    border: 2px solid var(--accent);
+    box-sizing: border-box;
+}
+
+/* Filled square for Completed */
+.logic-node.completed::before {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Hollow square for In Progress */
+.logic-node.in-progress::before {
+    background: var(--bg-dark);
+    border-radius: 50%; /* Make in-progress a circle/hollow */
+}
+
+.node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.node-date {
+    color: var(--accent);
+}
+
+/* 4. SMOOTH REVEAL ANIMATION */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .blueprint-card {
+        flex-direction: column;
+    }
+    .blueprint-visual {
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+}

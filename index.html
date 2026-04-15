@@ -3,208 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <title>Tallys Assis</title>
+    <title>Systems Engineer Portfolio</title>
+    <!-- Import Modern Sans-Serif and Monospace fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900">
-    <div class="h-screen w-full overflow-x-hidden bg-gray-800 flex flex-row items-center justify-center p-6 flex-wrap-reverse">
-        <div class="flex-grow-1 p-16 md:p-1 text-center flex flex-col">
-            <h1 class="text-white text-6xl font-bold drop-shadow-md/50">Tallys Assis</h1>
-            <h3 class="text-white text-2xl font-bold mt-8 drop-shadow-md/50" id="title-phrase">Software developer</h3>
-            <div class="flex flex-row gap-4 justify-center mt-4">
-                <a href="https://github.com/Talkys" class="hover:drop-shadow-md/100 drop-shadow-white cursor-pointer"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Github" class="max-w-16 invert drop-shadow-md/50"></a>
-                <a href="https://www.linkedin.com/in/tallys-assis-271631197/" class="hover:drop-shadow-md/100 drop-shadow-white cursor-pointer"><img src="./img/linkedin.png" alt="Github" class="max-w-16 drop-shadow-md/50"></a>
-                <a href="mailto:tallys.assis@gmail.com" class="hover:drop-shadow-md/100 drop-shadow-white cursor-pointer"><img src="./img/mail.png" alt="Github" class="max-w-16 drop-shadow-md/50 invert"></a>
-            </div>
-        </div>
-        <div class="flex-grow-1 p-16 flex flex-col items-center">
-            <img src="./img/Tallys_Souza01.png" alt="Perfil" class="w-100 max-w-[100%] rounded-full drop-shadow-xl/100">
-        </div>
+<body>
+
+    <div class="container">
         
-    </div>
-    <div class="w-full flex flex-col p-16 pt-8 gap-8">
-        <div class="w-full text-center">
-            <h1 class="text-white text-4xl font-bold" id="projects-title">My projects</h1>
-        </div>
-        <div class="flex flex-row flex-wrap gap-16 justify-center" id="project-container">
+        <!-- DASHBOARD HEADER -->
+        <header class="dashboard-header reveal">
+            <div class="header-left">
+                <div class="status-badge mono">
+                    <span class="status-dot"></span>
+                    SYS_STATUS: AVAILABLE
+                </div>
+                <h1>Tallys Assis</h1>
+                <p>Computer Scientist & Software Developer. Specializing in squeezing maximum performance out of resource-constrained hardware.</p>
+            </div>
+            
+            <div class="header-right">
+                <h3 class="mono">Live Tech Stack</h3>
+                <div class="tech-stack mono">
+                    <div class="tech-badge">C/C++</div>
+                    <div class="tech-badge">Python</div>
+                    <div class="tech-badge">Golang</div>
+                    <div class="tech-badge">ESP-IDF</div>
+                    <div class="tech-badge">SQL</div>
+                    <div class="tech-badge">x86 ASM</div>
+                    <div class="tech-badge">C#</div>
+                </div>
+            </div>
+        </header>
 
-        </div>
-    </div>
-    <div class="bg-gray-950 w-full p-16">
-        <h1 class="text-white text-4xl font-bold" id="about-me-title">About me</h1>
-        <p class="text-lg text-white mt-3" id="about-me-section">
-            I’m a software developer with a background that spans from .NET banking systems to my current role
-            building Python applications in the engineering sector. Most of my work centers on Flask, SQL, and Typescript,
-            with the occasional dive into C. I also manage Linux-based infrastructure and deployment, giving me a full
-            view of the development flow from code to production.
-            <br><br>
-            I enjoy creating robust solutions that replace costly commercial tools with tailored, efficient software.
-            My guiding principle is simple: never let a “temporary fix” become permanent. I'm also starting a embedded
-            development portfolio soon.
-            <br><br>
-            Outside of work, I spend my time gaming, writing, and going to heavy metal shows. I’m also a proud ThinkPad
-            enthusiast.
-        </p>
-    </div>
-    <script>
-        function getDescription(project) {
-            // Check the browser's language property
-            // `navigator.userLanguage` is a fallback for older IE versions
-            const userLang = Intl.DateTimeFormat().resolvedOptions().locale
+        <!-- PROJECT BLUEPRINTS -->
+        <section id="projects">
+            <h2 class="section-title">My Projects</h2>
 
-            // Check if the user's language is Portuguese (Brazil)
-            if (userLang === 'pt-BR') {
-                return project.description.pt;
-            }
-            // Otherwise, default to English
-            return project.description.en;
-        }
-        document.addEventListener("DOMContentLoaded", () => {
-            const userAgent = navigator.userAgent;
-            const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
+            <!-- Project 1 -->
+            <article class="blueprint-card reveal">
+                <div class="blueprint-visual">
+                    <svg fill="var(--text-muted)" width="100px" height="100px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title>research--bloch-sphere</title><path d="M21.87,7.84l-1.74-1L16,14h0a2,2,0,1,0,2,2,2,2,0,0,0-.27-1Z"/><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,2a12,12,0,0,1,11.17,7.65,25.69,25.69,0,0,0-3.69-1.5l-1,1.77a22.7,22.7,0,0,1,5.41,2.39,11.05,11.05,0,0,1,0,3.38A22.92,22.92,0,0,1,16,21,22.92,22.92,0,0,1,4.13,17.69a11.05,11.05,0,0,1,0-3.38A22.8,22.8,0,0,1,15,11V9a25,25,0,0,0-10.17,2.6A12,12,0,0,1,16,4Zm0,24A12,12,0,0,1,4.83,20.35,24.88,24.88,0,0,0,16,23a24.88,24.88,0,0,0,11.17-2.65A12,12,0,0,1,16,28Z"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg>
+                </div>
+                <div class="blueprint-content">
+                    <div class="blueprint-header">
+                        <div>
+                            <h3>Quantum computing simulator</h3>
+                            <div class="mono" style="color: var(--text-muted); margin-top: 5px;">Bachelor thesis. Pure C++</div>
+                        </div>
+                        <aside class="hw-specs mono">
+                            <ul>
+                                <li><span class="spec-label">Language:</span> <span class="spec-val">C++</span></li>
+                                <li><span class="spec-label">Dev:</span> <span class="spec-val">2024 - 2025</span></li>
+                                <li><span class="spec-label">Features:</span> <span class="spec-val">OpenMP</span></li>
+                                <li><span class="spec-label"></span> <span class="spec-val"><a href="https://github.com/Talkys/Quantum-Console">github.com</a></span></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <p class="blueprint-desc">
+                        CLI tool to simulate quantum circuits like Qiskit, but with a simpler codebase to introduce new enthusiasts. Runs on modest machines up to 20 qubits.
+                    </p>
+                </div>
+            </article>
 
-            if (isSafari) {
-                window.location.href = '/fallback.html'
-            }
+            <!-- Project 2 -->
+            <article class="blueprint-card reveal">
+                <div class="blueprint-visual">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="blueprint-content">
+                    <div class="blueprint-header">
+                        <div>
+                            <h3>Braille Artify</h3>
+                            <div class="mono" style="color: var(--text-muted); margin-top: 5px;">img_to_txt</div>
+                        </div>
+                        <aside class="hw-specs mono">
+                            <ul>
+                                <li><span class="spec-label">Language:</span> <span class="spec-val">Go</span></li>
+                                <li><span class="spec-label">Dev:</span> <span class="spec-val"> 2023 - 2025</span></li>
+                                <li><span class="spec-label">Features:</span> <span class="spec-val">Video support</span></li>
+                                <li><span class="spec-label"></span> <span class="spec-val"><a href="https://github.com/Talkys/BrailleArtify">github.com</a></span></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <p class="blueprint-desc">
+                        A custom CLI render engine to plot images and video to the terminal. Features concurrent processing to avoid playback lag.
+                    </p>
+                </div>
+            </article>
 
-            const language = Intl.DateTimeFormat().resolvedOptions().locale
-            const projects = [{
-            name: "Quantum Console",
-            image: "./img/atom.png",
-            url: 'quantum.html',
-            description: {
-                en: "Quantum computing simulator made in C++",
-                pt: "Simulador de computação quântica feito em C++"
-            }
-            }, {
-            name: "Dither filter",
-            image: "./img/image.png",
-            url: 'dither.html',
-            description: {
-                en: "A color map filter with dithering made in Go",
-                pt: "Um filtro de mapa de cores com dithering feito em Go"
-            }
-            }, {
-            name: "Braille Artify",
-            image: "./img/braille.png",
-            url: 'https://github.com/Talkys/BrailleArtify',
-            description: {
-                en: "An img to text program capable of playing videos in cli made in Go",
-                pt: "Um programa de imagem para texto capaz de reproduzir vídeos em cli, feito em Go"
-            }
-            }, {
-            name: "Auto Dungeon",
-            image: "./img/tiles.png",
-            url: 'https://github.com/Talkys/Auto-Dungeon',
-            description: {
-                en: "Basic tile dungeon generator made in Go and Python for dungeon masters",
-                pt: "Gerador básico de masmorras de azulejo feito em Go e Python para mestres de masmorras"
-            }
-            }, {
-            name: "ZuimOS",
-            image: "./img/monitor.png",
-            url: 'https://github.com/Talkys/ZuimOS',
-            description: {
-                en: "Basic operating system made on graduation with simple commands",
-                pt: "Sistema operacional básico feito na graduação com comandos simples"
-            }
-            }, {
-            name: "AmogOS",
-            image: "./img/amogus.png",
-            url: 'https://github.com/Talkys/AmogOS',
-            description: {
-                en: "Very basic bootable program that display the amogus meme",
-                pt: "Programa inicializável muito básico que exibe o meme amogus"
-            }
-            }, {
-            name: "Donut",
-            image: "./img/donut.png",
-            url: 'https://github.com/Talkys/donut',
-            description: {
-                en: "The classic donut made in many languages",
-                pt: "O clássico donut feito em várias linguagens"
-            }
-            }, {
-            name: "Alton's Journey",
-            image: "./img/unity.png",
-            url: 'https://github.com/Talkys/Alton-s-Journey',
-            description: {
-                en: "Simple Android game made on graduation using Unity",
-                pt: "Jogo simples para Android feito na graduação usando Unity"
-            }
-            }, {
-            name: "Creeps",
-            image: "./img/godot.png",
-            url: 'https://github.com/Talkys/Creeps',
-            description: {
-                en: "Flatpak version of the creeps game and implemented code for Godot",
-                pt: "Versão Flatpak do jogo creeps e código implementado para Godot"
-            }
-            }];
+            <article class="blueprint-card reveal">
+                <div class="blueprint-visual">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="blueprint-content">
+                    <div class="blueprint-header">
+                        <div>
+                            <h3>Talkys chess bot</h3>
+                            <div class="mono" style="color: var(--text-muted); margin-top: 5px;">Chess engine and AI</div>
+                        </div>
+                        <aside class="hw-specs mono">
+                            <ul>
+                                <li><span class="spec-label">Language:</span> <span class="spec-val">C++</span></li>
+                                <li><span class="spec-label">Dev:</span> <span class="spec-val"> 2025 - 2026</span></li>
+                                <li><span class="spec-label">Features:</span> <span class="spec-val">ESP32 compatible</span></li>
+                                <li><span class="spec-label"></span> <span class="spec-val"><a href="https://github.com/Talkys/Talkys-Chess-Bot">github.com</a></span></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <p class="blueprint-desc">
+                        A full chess engine with desktop and ESP32 version, capable of playing around ELO 1500 in limited hardware.
+                    </p>
+                </div>
+            </article>
+        </section>
 
-            const container = document.getElementById("project-container")
-            container.innerHTML = "";
-            projects.forEach((project) => {
-                const link = document.createElement('a');
-                link.href = project.url
-
-                const block = document.createElement("div");
-                block.className = "h-90 w-80 bg-gray-950 rounded-3xl hover:brightness-110 hover:drop-shadow-xl/100 drop-shadow-white cursor-pointer flex flex-col items-center gap-4 p-6";
+        <!-- LOGIC FLOW (EXPERIENCE) -->
+        <section id="experience" style="margin-top: 80px;">
+            <h2 class="section-title">Career and experience</h2>
+            
+            <div class="logic-flow">
                 
-                const title = document.createElement("h3");
-                title.className = "text-2xl font-bold text-white";
-                title.innerText = project.name;
+                <!-- Node: In Progress -->
+                <div class="logic-node in-progress reveal">
+                    <div class="node-header">
+                        <h3>Jr. Software Engineer</h3>
+                        <span class="node-date mono">2025 - Present</span>
+                    </div>
+                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Draft Solutions</div>
+                    <p>Developing internal tooling with on premise infra for budget processing ang work allocation.</p>
+                </div>
 
-                const image = document.createElement("img")
-                image.className = "h-40 invert-70";
-                image.src = project.image;
-                image.alt = project.name;
+                <!-- Node: Completed -->
+                <div class="logic-node completed reveal">
+                    <div class="node-header">
+                        <h3>Software Engineering Intern</h3>
+                        <span class="node-date mono">2024 - 2025</span>
+                    </div>
+                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Draft Solutions</div>
+                    <p>Developing automation tools for internal use.</p>
+                </div>
 
-                const description = document.createElement("p");
-                description.className = "text-md text-white text-center";
-                description.innerText = getDescription(project);
+                <div class="logic-node completed reveal">
+                    <div class="node-header">
+                        <h3>Software Engineering Intern</h3>
+                        <span class="node-date mono">2021 - 2023</span>
+                    </div>
+                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Spark Systems</div>
+                    <p>Developing contractual audit tools for banking systems.</p>
+                </div>
 
-                block.appendChild(title);
-                block.appendChild(image);
-                block.appendChild(description);
+                <!-- Node: Completed -->
+                <div class="logic-node completed reveal">
+                    <div class="node-header">
+                        <h3>B.S. Computer Science</h3>
+                        <span class="node-date mono">2019 - 2025</span>
+                    </div>
+                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Pontifical Catholic University of Minas Gerais</div>
+                    <p>Specialization in quantum computing and computer architecture.</p>
+                </div>
 
-                link.appendChild(block)
-                container.appendChild(link);
-            })
+            </div>
+        </section>
 
+    </div>
+
+    <!-- 4. SUBTLE INTERACTIVITY (SCROLL REVEAL JS) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll(".reveal");
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        // Optional: Stop observing once revealed
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the bottom
+            });
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
             
-
-            const about_me = document.getElementById('about-me-section');
-            const about_title = document.getElementById('about-me-title');
-            const title_phrase = document.getElementById('title-phrase')
-            const projects_title = document.getElementById('projects-title')
-
-            switch (language) {
-                case 'pt-BR':
-                    about_me.innerHTML = `
-                        Sou um desenvolvedor de software com experiência que vai desde sistemas bancários em .NET até meu trabalho atual,
-                        onde desenvolvo aplicativos em Python para o setor de engenharia. A maior parte do meu trabalho se concentra em Flask,
-                        SQL e TypeScript, com incursões ocasionais em C. Também gerencio infraestrutura e implantação baseada em Linux,
-                        tendo uma visão completa do fluxo de desenvolvimento, do código à produção.
-                        <br><br>
-                        Gosto de criar soluções robustas que substituem ferramentas comerciais caras por softwares eficientes e personalizados.
-                        Meu princípio é simples: nunca deixar que uma "solução temporária" se torne permanente.
-                        Em breve, também começarei a montar um portfólio de desenvolvimento embarcado.
-                        <br><br>
-                        Fora do trabalho, passo meu tempo jogando, escrevendo ou indo a shows de heavy metal.
-                        Também sou um orgulhoso fã de ThinkPads.
-                    `
-
-                    about_title.innerText = 'Sobre mim'
-                    title_phrase.innerText = 'Desenvolvedor de software'
-                    projects_title.innerText = 'Meus projetos'
-                    break;
-            
-                default:
-                    break;
-            }
-        })
+            // Trigger immediately for items already in viewport on load
+            setTimeout(() => {
+                reveals.forEach(reveal => {
+                    const rect = reveal.getBoundingClientRect();
+                    if(rect.top < window.innerHeight) {
+                        reveal.classList.add("active");
+                    }
+                });
+            }, 100);
+        });
     </script>
 </body>
 </html>
