@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Linkedin Badge -->
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white font-sans">
+    <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 w-full border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
+    <div class="mx-auto flex items-center justify-between p-4 md:px-8">
+        <a href="/index.html" class="text-xs sm:text-sm font-semibold tracking-wider hover:text-zinc-400 transition-colors whitespace-nowrap">
+          Tallys Assis
+        </a>
+        <nav class="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm text-zinc-400">
+          <a href="/about.html" class="text-zinc-100 font-medium">About</a>
+          <a href="/projects.html" class="hover:text-zinc-100 transition-colors">Projects</a>
+          <a href="/experience.html" class="hover:text-zinc-100 transition-colors">Experience</a>
+          <a href="/contact.html" class="hover:text-zinc-100 transition-colors">Contact</a>
+        </nav>
+      </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 py-8 md:px-8 md:py-24 space-y-16">
+    <h1 class="text-4xl font-light tracking-tight sm:text-5xl md:text-6xl text-zinc-100">
+        About me
+    </h1>
+
+    <div class="flex flex-col-reverse lg:flex-row gap-8 items-center lg:items-start justify-between">
+        <div class="flex flex-col gap-6 w-full lg:w-2/3">
+            <p class="text-base sm:text-lg text-zinc-400 leading-relaxed">
+                I am a software engineer focused on building reliable, high-performance applications and scalable distributed systems. While my main expertise lies in backend development, database architecture, and frontend design, my work spans complex technical challenges, from writing high-performance ETL pipelines completely from scratch to building custom report-rendering engines. I take pride in designing clean, maintainable architectures, optimizing system performance, and writing thoroughly documented code.
+            </p>
+            <p class="text-base sm:text-lg text-zinc-400 leading-relaxed">
+                When I'm away from my main workstation, I continue to explore my passion for software through hands-on hobby projects. I frequently dive into embedded systems and low-level development, build custom image processing pipelines, and experiment with miscellaneous concepts just to see how far I can push the technology.
+            </p>
+        </div>
+        <div class="w-full lg:w-auto flex justify-center">
+            <div class="badge-base LI-profile-badge shrink-0" data-locale="pt_BR" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="tallys-assis-271631197" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://br.linkedin.com/in/tallys-assis-271631197?trk=profile-badge"></a>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-zinc-100">Academic Background</h2>
+
+    <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+        <div class="w-full md:w-1/2 bg-zinc-900 p-2 rounded-xl">
+            <img class="rounded-lg w-full h-auto object-cover" src="img/photos/puc-campus.png" alt="PUC Campus">
+            <p class="w-full text-center text-xs sm:text-sm text-zinc-400 mt-2">Pontifical Catholic University of Minas Gerais</p>
+        </div>
+        <div class="w-full md:w-1/2 flex flex-col gap-6">
+            <p class="text-base sm:text-lg text-zinc-400 leading-relaxed">
+                I hold a Bachelor's degree in Computer Science from the Pontifical Catholic University of Minas Gerais (PUC Minas). During my time at the university, I focused not only on core computer science foundations but also on sharing that knowledge with the broader community.
+            </p>
+        </div>
+    </div>
+
+    <div class="flex flex-col-reverse md:flex-row gap-6 md:gap-8 items-center">
+        <div class="w-full md:w-1/2 flex flex-col gap-6">
+            <p class="text-base sm:text-lg text-zinc-400 leading-relaxed">
+                A highlight of my academic journey was presenting my projects at PUC Aberta, where I demonstrated practical applications of computer science to prospective high school students considering the field.
+            </p>
+        </div>
+        <div class="w-full md:w-1/2 bg-zinc-900 p-2 rounded-xl">
+            <img class="rounded-lg w-full h-auto object-cover" src="img/photos/puc-aberta.png" alt="Presenting at PUC Aberta">
+            <p class="w-full text-center text-xs sm:text-sm text-zinc-400 mt-2">Me at <span class="italic">PUC Aberta</span> presenting the Braille Artify project</p>
+        </div>
+    </div>
+
+    <div class="flex flex-col-reverse md:flex-row gap-6 md:gap-8 items-center">
+        <div class="w-full md:w-1/2 bg-zinc-900 p-2 rounded-xl">
+            <img class="rounded-lg w-full h-auto object-cover" src="img/photos/blog-print.png" alt="Blog print">
+            <p class="w-full text-center text-xs sm:text-sm text-zinc-400 mt-2">You can access the blog <a class="text-blue-400 hover:underline" href="https://talkys-embedded-blog.onrender.com/">here</a></p>
+        </div>
+        <div class="w-full md:w-1/2 flex flex-col gap-6">
+            <p class="text-base sm:text-lg text-zinc-400 leading-relaxed">
+                I have a dev blog where I talk about some of my projects. Originally dedicated to my embedded projects but I'm working on migrating it to a development blog in general in the future. Hopefully I'll remember to change the link.
+            </p>
+        </div>
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight text-zinc-100">Looking Ahead</h2>
+
+    <p class="text-base sm:text-lg text-zinc-400 leading-relaxed">
+        Whether I'm tackling production-level backend bottlenecks, fine-tuning a database schema, or tinkering with microcontrollers on the weekend, I'm always eager to take on complex technical challenges and turn ideas into robust software.
+    </p>   
+
+  </main>
+
+  <!-- Footer -->
+    <footer class="border-t border-zinc-900 bg-zinc-950 py-8">
+        <div class="mx-auto max-w-5xl px-4 text-center text-xs text-zinc-600 md:px-8">
+            <p>&copy; 2026 Tallys Assis. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
