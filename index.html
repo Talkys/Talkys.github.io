@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tallys Assis</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white font-sans">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-5xl items-center justify-between p-4 md:px-8">
+        <a href="/index.html" class="text-sm font-semibold tracking-wider hover:text-zinc-400 transition-colors">
+          Tallys Assis
+        </a>
+        <nav class="flex items-center gap-6 text-sm text-zinc-400">
+          <a href="/about.html" class="hover:text-zinc-100 transition-colors">About</a>
+          <a href="/projects.html" class="hover:text-zinc-100 transition-colors">Projects</a>
+          <a href="/experience.html" class="hover:text-zinc-100 transition-colors">Experience</a>
+          <a href="/contact.html" class="hover:text-zinc-100 transition-colors">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-24 space-y-32">
+
+        <!-- Hero Section -->
+        <section id="about" class="space-y-6 max-w-3xl pt-8">
+            <!--
+            <div
+                class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                </span>
+                Open to new opportunities
+            </div>
+            -->
+
+            <h1 class="text-4xl font-light tracking-tight sm:text-5xl md:text-6xl text-zinc-100">
+                Hi, I'm <span class="font-normal text-zinc-300">Tallys Assis</span>.
+            </h1>
+
+            <p class="text-lg text-zinc-400 leading-relaxed">
+                I am a software engineer focused on building reliable high performance applications and distributed
+                systems. I design clean architectures, optimize performance, and write documented, maintainable code.
+            </p>
+
+            <div class="flex flex-wrap gap-4 pt-4">
+                <a href="/projects.html"
+                    class="rounded-lg bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-200 transition-colors">
+                    View Projects
+                </a>
+                <a href="/contact.html"
+                    class="rounded-lg border border-zinc-800 bg-zinc-900/30 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-950 transition-colors">
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+
+        <!-- Selected Projects -->
+        <section id="projects" class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Featured projects</h2>
+                <p class="text-lg text-zinc-300">Applications and open-source tools I have built.</p>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2">
+
+                <!-- Project 1 -->
+                <div
+                    class="group relative rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 hover:border-zinc-800 hover:bg-zinc-900/40 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-zinc-500">Go / PostgreSQL / React</span>
+                        <a href="#" target="_blank" rel="noopener noreferrer"
+                            class="text-zinc-500 hover:text-zinc-300 transition-colors" aria-label="External Link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
+                    </div>
+                    <h3 class="text-lg font-medium text-zinc-200 group-hover:text-zinc-100 transition-colors">
+                        Talkys Chess Bot</h3>
+                    <p class="mt-2 text-sm text-zinc-400 leading-relaxed">
+                        A high-performance, modular C++ bitboard chess engine optimized for x86 and ESP-32. Achieves ~1500 ELO and process speeds exceeding 20k nodes/s on microcontrollers.
+                    </p>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="group relative rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 hover:border-zinc-800 hover:bg-zinc-900/40 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-zinc-500">Rust / WebAssembly</span>
+                        <a href="#" target="_blank" rel="noopener noreferrer"
+                            class="text-zinc-500 hover:text-zinc-300 transition-colors" aria-label="External Link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
+                    </div>
+                    <h3 class="text-lg font-medium text-zinc-200 group-hover:text-zinc-100 transition-colors">Markdown
+                        Quantum Console</h3>
+                    <p class="mt-2 text-sm text-zinc-400 leading-relaxed">
+                        A quantum computing circuit simulator made in C++ with focus on portability and readability.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience / Professional Journey -->
+        <section id="experience" class="grid gap-12 md:grid-cols-3">
+            <div class="space-y-2 md:col-span-1">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Experience</h2>
+                <p class="text-lg text-zinc-300">Work history and professional background.</p>
+            </div>
+
+            <div class="md:col-span-2 space-y-12">
+
+                <!-- Job 1 -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-zinc-200">Junior Software Engineer</h3>
+                        <span class="text-xs font-mono text-zinc-500">2025 - 2026</span>
+                    </div>
+                    <p class="text-sm font-medium text-zinc-400">Draft Solutions</p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Promoted into a full-time engineering lead role to scale the internal tools ecosystem; recruited, onboarded, and managed a team of two developers, establishing clear task distribution and code quality standards.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Architected and launched Orca, a custom budget-processing platform designed to streamline financial workflows, accelerate approvals, and reduce manual calculations.
+                    </p>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-zinc-200">Software Engineering Intern</h3>
+                        <span class="text-xs font-mono text-zinc-500">2024 - 2025</span>
+                    </div>
+                    <p class="text-sm font-medium text-zinc-400">Draft Solutions</p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Spearheaded internal digital transformation by identifying operational bottlenecks and building custom software to enforce data integrity across legacy workflows.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Architected and launched custom Python web applications for task management, dynamic report generation, and multi-source data consolidation.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Conducted end-to-end user research and requirement gathering directly with stakeholders, translating non-technical business needs into technical specifications and production-ready applications.
+                    </p>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-zinc-200">Software Engineering Intern</h3>
+                        <span class="text-xs font-mono text-zinc-500">2021 - 2023</span>
+                    </div>
+                    <p class="text-sm font-medium text-zinc-400">Spark Systems</p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Engineered high-throughput .NET tools to analyze banking contracts, implementing automated risk-scoring logic and rules engines to detect fraudulent activity prior to settlement.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Architected Python RPA solutions leveraging custom web scrapers and automation libraries to extract, transform, and pipe data from legacy API-less endpoints into modern data pipelines.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technologies & Skills -->
+        <section class="grid gap-12 md:grid-cols-3">
+            <div class="space-y-2 md:col-span-1">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Core Stack</h2>
+                <p class="text-lg text-zinc-300">Languages and tools I use frequently.</p>
+            </div>
+
+            <div class="md:col-span-2 space-y-8">
+                <div>
+                    <h3 class="text-sm font-medium text-zinc-400 mb-3">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">TypeScript</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Go</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">C/C++</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">C#</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Python</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">SQL</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-medium text-zinc-400 mb-3">Frameworks & Environments</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Gin</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Spring Boot</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Flask</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">FastAPI</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Vite</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-medium text-zinc-400 mb-3">Infrastructure & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Docker</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">PostgreSQL</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Redis</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">AWS</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Git / GitHub Actions</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Linux</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">.NET Core</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Connect -->
+        <section id="contact" class="border-t border-zinc-900 pt-16">
+            <div class="mx-auto max-w-xl text-center space-y-6">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Connect</h2>
+                <h3 class="text-2xl font-light text-zinc-200">Let's discuss development</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed">
+                    I am regularly looking for feedback and project collaboration. If you would like to discuss
+                    engineering problems or system architectures, feel free to reach out.
+                </p>
+                <div class="flex justify-center gap-6 pt-4">
+                    <a href="mailto:tallys.comercial@gmail.com"
+                        class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0l-7.5-4.615a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+                        Email
+                    </a>
+                    <a href="https://github.com/Talkys" target="_blank" rel="noopener noreferrer"
+                        class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2">
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/tallys-assis-271631197/" target="_blank" rel="noopener noreferrer"
+                        class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-900 bg-zinc-950 py-8">
+        <div class="mx-auto max-w-5xl px-4 text-center text-xs text-zinc-600 md:px-8">
+            <p>&copy; 2026 Tallys Assis. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
