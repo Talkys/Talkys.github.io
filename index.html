@@ -1,296 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tallys Assis</title>
-    <!-- Import Modern Sans-Serif and Monospace fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
 
-    <div class="container">
-        
-        <!-- DASHBOARD HEADER -->
-        <header class="dashboard-header reveal">
-            <div class="header-left">
-                <div class="status-badge mono">
-                    <span class="status-dot"></span>
-                    SYS_STATUS: AVAILABLE
-                </div>
-                <h1>Tallys Assis</h1>
-                <p>Computer Scientist & Software Developer. Specializing in squeezing maximum performance out of resource-constrained hardware.</p>
+<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white font-sans">
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-5xl items-center justify-between p-4 md:px-8">
+        <a href="/index.html" class="text-sm font-semibold tracking-wider hover:text-zinc-400 transition-colors">
+          Tallys Assis
+        </a>
+        <nav class="flex items-center gap-6 text-sm text-zinc-400">
+          <a href="/about.html" class="hover:text-zinc-100 transition-colors">About</a>
+          <a href="/projects.html" class="hover:text-zinc-100 transition-colors">Projects</a>
+          <a href="/experience.html" class="hover:text-zinc-100 transition-colors">Experience</a>
+          <a href="/contact.html" class="hover:text-zinc-100 transition-colors">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-24 space-y-32">
+
+        <!-- Hero Section -->
+        <section id="about" class="space-y-6 max-w-3xl pt-8">
+            <!--
+            <div
+                class="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-xs text-zinc-400">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                </span>
+                Open to new opportunities
             </div>
-            
-            <div class="header-right">
-                <h3 class="mono">Live Tech Stack</h3>
-                <div class="tech-stack mono">
-                    <div class="tech-badge">C/C++</div>
-                    <div class="tech-badge">Python</div>
-                    <div class="tech-badge">Golang</div>
-                    <div class="tech-badge">ESP-IDF</div>
-                    <div class="tech-badge">SQL</div>
-                    <div class="tech-badge">x86 ASM</div>
-                    <div class="tech-badge">C#</div>
-                </div>
-            </div>
-        </header>
+            -->
 
-        <!-- PROJECT BLUEPRINTS -->
-        <section id="projects">
-            <h2 class="section-title">My Projects</h2>
+            <h1 class="text-4xl font-light tracking-tight sm:text-5xl md:text-6xl text-zinc-100">
+                Hi, I'm <span class="font-normal text-zinc-300">Tallys Assis</span>.
+            </h1>
 
-            <!-- Project 1 -->
-            <article class="blueprint-card reveal">
-                <div class="blueprint-visual">
-                    <svg fill="var(--text-muted)" width="100px" height="100px" viewBox="0 0 32 32" id="icon" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;}</style></defs><title>research--bloch-sphere</title><path d="M21.87,7.84l-1.74-1L16,14h0a2,2,0,1,0,2,2,2,2,0,0,0-.27-1Z"/><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,2a12,12,0,0,1,11.17,7.65,25.69,25.69,0,0,0-3.69-1.5l-1,1.77a22.7,22.7,0,0,1,5.41,2.39,11.05,11.05,0,0,1,0,3.38A22.92,22.92,0,0,1,16,21,22.92,22.92,0,0,1,4.13,17.69a11.05,11.05,0,0,1,0-3.38A22.8,22.8,0,0,1,15,11V9a25,25,0,0,0-10.17,2.6A12,12,0,0,1,16,4Zm0,24A12,12,0,0,1,4.83,20.35,24.88,24.88,0,0,0,16,23a24.88,24.88,0,0,0,11.17-2.65A12,12,0,0,1,16,28Z"/><rect id="_Transparent_Rectangle_" data-name="&lt;Transparent Rectangle&gt;" class="cls-1" width="32" height="32"/></svg>
-                </div>
-                <div class="blueprint-content">
-                    <div class="blueprint-header">
-                        <div>
-                            <h3>Quantum computing simulator</h3>
-                            <div class="mono" style="color: var(--text-muted); margin-top: 5px;">Bachelor thesis. Pure C++</div>
-                        </div>
-                        <aside class="hw-specs mono">
-                            <ul>
-                                <li><span class="spec-label">Language:</span> <span class="spec-val">C++</span></li>
-                                <li><span class="spec-label">Dev:</span> <span class="spec-val">2024 - 2025</span></li>
-                                <li><span class="spec-label">Features:</span> <span class="spec-val">OpenMP</span></li>
-                                <li><span class="spec-label"></span> <span class="spec-val"><a href="https://github.com/Talkys/Quantum-Console">github.com</a></span></li>
-                            </ul>
-                        </aside>
-                    </div>
-                    <p class="blueprint-desc">
-                        CLI tool to simulate quantum circuits like Qiskit, but with a simpler codebase to introduce new enthusiasts. Runs on modest machines up to 20 qubits.
-                    </p>
-                </div>
-            </article>
+            <p class="text-lg text-zinc-400 leading-relaxed">
+                I am a software engineer focused on building reliable high performance applications and distributed
+                systems. I design clean architectures, optimize performance, and write documented, maintainable code.
+            </p>
 
-            <!-- Project 2 -->
-            <article class="blueprint-card reveal">
-                <div class="blueprint-visual">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="var(--text-muted)"><path d="M237.5-278.5Q255-296 255-319t-17.5-40.5Q220-377 197-377t-40.5 17.5Q139-342 139-319t17.5 40.5Q174-261 197-261t40.5-17.5ZM387-456q11-11 11-27t-11-27q-11-11-27-11t-27 11q-11 11-11 27t11 27q11 11 27 11t27-11Zm0-164q11-11 11-27t-11-27q-11-11-27-11t-27 11q-11 11-11 27t11 27q11 11 27 11t27-11ZM120-120v-60h720v60H120Zm117.5-486.5Q255-624 255-647t-17.5-40.5Q220-705 197-705t-40.5 17.5Q139-670 139-647t17.5 40.5Q174-589 197-589t40.5-17.5Zm0 164Q255-460 255-483t-17.5-40.5Q220-541 197-541t-40.5 17.5Q139-506 139-483t17.5 40.5Q174-425 197-425t40.5-17.5ZM387-288q11-11 11-27t-11-27q-11-11-27-11t-27 11q-11 11-11 27t11 27q11 11 27 11t27-11Zm322-15q7-7 7-16t-7-16q-7-7-16-7t-16 7q-7 7-7 16t7 16q7 7 16 7t16-7ZM120-780v-60h720v60H120Zm589 149q7-7 7-16t-7-16q-7-7-16-7t-16 7q-7 7-7 16t7 16q7 7 16 7t16-7Zm0 164q7-7 7-16t-7-16q-7-7-16-7t-16 7q-7 7-7 16t7 16q7 7 16 7t16-7ZM552-620q11-11 11-27t-11-27q-11-11-27-11t-27 11q-11 11-11 27t11 27q11 11 27 11t27-11Zm0 164q11-11 11-27t-11-27q-11-11-27-11t-27 11q-11 11-11 27t11 27q11 11 27 11t27-11Zm0 168q11-11 11-27t-11-27q-11-11-27-11t-27 11q-11 11-11 27t11 27q11 11 27 11t27-11ZM120-180v-600 600Z"/></svg>
-                </div>
-                <div class="blueprint-content">
-                    <div class="blueprint-header">
-                        <div>
-                            <h3>Braille Artify</h3>
-                            <div class="mono" style="color: var(--text-muted); margin-top: 5px;">img_to_txt</div>
-                        </div>
-                        <aside class="hw-specs mono">
-                            <ul>
-                                <li><span class="spec-label">Language:</span> <span class="spec-val">Go</span></li>
-                                <li><span class="spec-label">Dev:</span> <span class="spec-val"> 2023 - 2025</span></li>
-                                <li><span class="spec-label">Features:</span> <span class="spec-val">Video support</span></li>
-                                <li><span class="spec-label"></span> <span class="spec-val"><a href="https://github.com/Talkys/BrailleArtify">github.com</a></span></li>
-                            </ul>
-                        </aside>
-                    </div>
-                    <p class="blueprint-desc">
-                        A custom CLI render engine to plot images and video to the terminal. Features concurrent processing to avoid playback lag.
-                    </p>
-                </div>
-            </article>
-
-            <article class="blueprint-card reveal">
-                <div class="blueprint-visual">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill="var(--text-muted)"><path d="M180-140h600v-120H180v120Zm132-180h336l-24-170H336l-24 170ZM120-80v-180q0-24.75 17.63-42.38Q155.25-320 180-320h72l24-170H170v-60h620v60H684l24 170h72q24.75 0 42.38 17.62Q840-284.75 840-260v180H120Zm153-470-73-330q31 30 68 46.5t75.41 16.5q36.59 0 71.09-16t65.5-47q31 31 65.5 47t71.5 16q37 0 74.5-16.5T760-880l-73 330h-62l46-213q-16 3-30.5 5t-28.5 2q-36 0-69-10.5T480-797q-30 20-63 30.5T348-756q-14 0-28.5-2t-30.5-5l46 213h-62Zm207 60Zm0-60Zm0 410Z"/></svg>
-                </div>
-                <div class="blueprint-content">
-                    <div class="blueprint-header">
-                        <div>
-                            <h3>Talkys chess bot</h3>
-                            <div class="mono" style="color: var(--text-muted); margin-top: 5px;">Chess engine and AI</div>
-                        </div>
-                        <aside class="hw-specs mono">
-                            <ul>
-                                <li><span class="spec-label">Language:</span> <span class="spec-val">C++</span></li>
-                                <li><span class="spec-label">Dev:</span> <span class="spec-val"> 2025 - 2026</span></li>
-                                <li><span class="spec-label">Features:</span> <span class="spec-val">ESP32 compatible</span></li>
-                                <li><span class="spec-label"></span> <span class="spec-val"><a href="https://github.com/Talkys/Talkys-Chess-Bot">github.com</a></span></li>
-                            </ul>
-                        </aside>
-                    </div>
-                    <p class="blueprint-desc">
-                        A full chess engine with desktop and ESP32 version, capable of playing around ELO 1500 in limited hardware.
-                    </p>
-                </div>
-            </article>
-        </section>
-
-        <!-- MICRO-PROJECTS / EXPERIMENTS -->
-        <section id="micro-projects" style="margin-top: 80px;">
-            <h2 class="section-title">Micro-tools & Experiments</h2>
-            
-            <div class="micro-grid">
-                
-                <!-- Micro Project 1 -->
-                <article class="micro-card reveal">
-                    <div class="micro-header">
-                        <h3>Auto dungeon</h3>
-                        <a href="https://github.com/Talkys/Auto-Dungeon" class="mono">github.com</a>
-                    </div>
-                    <p class="blueprint-desc">
-                        Dungeon map generator made in Go and Python.
-                    </p>
-                    <div class="tech-stack mono" style="font-size: 0.8em; margin-top: auto;">
-                        <div class="tech-badge">Python</div>
-                        <div class="tech-badge">Go</div>
-                    </div>
-                </article>
-
-                <!-- Micro Project 2 -->
-                <article class="micro-card reveal">
-                    <div class="micro-header">
-                        <h3>ZuimOS</h3>
-                        <a href="https://github.com/Talkys/ZuimOS" class="mono">github.com</a>
-                    </div>
-                    <p class="blueprint-desc">
-                        Simple demo operating system made in C and Assembly.
-                    </p>
-                    <div class="tech-stack mono" style="font-size: 0.8em; margin-top: auto;">
-                        <div class="tech-badge">C</div>
-                        <div class="tech-badge">Assembly x86</div>
-                    </div>
-                </article>
-
-                <!-- Micro Project 3 (Odd item - will left align automatically) -->
-                <article class="micro-card reveal">
-                    <div class="micro-header">
-                        <h3>Donut</h3>
-                        <a href="https://github.com/Talkys/donut" class="mono">github.com</a>
-                    </div>
-                    <p class="blueprint-desc">
-                        A multi language repo of implementations of the rotating donut program.
-                    </p>
-                    <div class="tech-stack mono" style="font-size: 0.8em; margin-top: auto;">
-                        <div class="tech-badge">Many languages</div>
-                    </div>
-                </article>
-
+            <div class="flex flex-wrap gap-4 pt-4">
+                <a href="/projects.html"
+                    class="rounded-lg bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-200 transition-colors">
+                    View Projects
+                </a>
+                <a href="/contact.html"
+                    class="rounded-lg border border-zinc-800 bg-zinc-900/30 px-4 py-2 text-sm font-medium text-zinc-300 hover:bg-zinc-950 transition-colors">
+                    Get in Touch
+                </a>
             </div>
         </section>
 
-        <!-- LOGIC FLOW (EXPERIENCE) -->
-        <section id="experience" style="margin-top: 80px;">
-            <h2 class="section-title">Career and experience</h2>
-            
-            <div class="logic-flow">
-                
-                <!-- Node: In Progress -->
-                <div class="logic-node in-progress reveal">
-                    <div class="node-header">
-                        <h3>Jr. Software Engineer</h3>
-                        <span class="node-date mono">2025 - Present</span>
+        <!-- Selected Projects -->
+        <section id="projects" class="space-y-8">
+            <div class="space-y-2">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Featured projects</h2>
+                <p class="text-lg text-zinc-300">Applications and open-source tools I have built.</p>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2">
+
+                <!-- Project 1 -->
+                <div
+                    class="group relative rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 hover:border-zinc-800 hover:bg-zinc-900/40 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-zinc-500">Go / PostgreSQL / React</span>
+                        <a href="#" target="_blank" rel="noopener noreferrer"
+                            class="text-zinc-500 hover:text-zinc-300 transition-colors" aria-label="External Link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
                     </div>
-                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Draft Solutions</div>
-                    <p>Developing internal tooling with on premise infra for budget processing ang work allocation.</p>
+                    <h3 class="text-lg font-medium text-zinc-200 group-hover:text-zinc-100 transition-colors">
+                        Talkys Chess Bot</h3>
+                    <p class="mt-2 text-sm text-zinc-400 leading-relaxed">
+                        A high-performance, modular C++ bitboard chess engine optimized for x86 and ESP-32. Achieves ~1500 ELO and process speeds exceeding 20k nodes/s on microcontrollers.
+                    </p>
                 </div>
 
-                <!-- Node: Completed -->
-                <div class="logic-node completed reveal">
-                    <div class="node-header">
-                        <h3>Software Engineering Intern</h3>
-                        <span class="node-date mono">2024 - 2025</span>
+                <!-- Project 2 -->
+                <div
+                    class="group relative rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 hover:border-zinc-800 hover:bg-zinc-900/40 transition-all duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-mono text-zinc-500">Rust / WebAssembly</span>
+                        <a href="#" target="_blank" rel="noopener noreferrer"
+                            class="text-zinc-500 hover:text-zinc-300 transition-colors" aria-label="External Link">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
                     </div>
-                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Draft Solutions</div>
-                    <p>Developing automation tools for internal use.</p>
-                </div>
-
-                <div class="logic-node completed reveal">
-                    <div class="node-header">
-                        <h3>Software Engineering Intern</h3>
-                        <span class="node-date mono">2021 - 2023</span>
-                    </div>
-                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Spark Systems</div>
-                    <p>Developing contractual audit tools for banking systems.</p>
-                </div>
-
-                <!-- Node: Completed -->
-                <div class="logic-node completed reveal">
-                    <div class="node-header">
-                        <h3>B.S. Computer Science</h3>
-                        <span class="node-date mono">2019 - 2025</span>
-                    </div>
-                    <div class="mono" style="color: var(--text-muted); margin-bottom: 10px;">@ Pontifical Catholic University of Minas Gerais</div>
-                    <p>Specialization in quantum computing and computer architecture.</p>
+                    <h3 class="text-lg font-medium text-zinc-200 group-hover:text-zinc-100 transition-colors">Markdown
+                        Quantum Console</h3>
+                    <p class="mt-2 text-sm text-zinc-400 leading-relaxed">
+                        A quantum computing circuit simulator made in C++ with focus on portability and readability.
+                    </p>
                 </div>
 
             </div>
         </section>
 
-    </div>
+        <!-- Experience / Professional Journey -->
+        <section id="experience" class="grid gap-12 md:grid-cols-3">
+            <div class="space-y-2 md:col-span-1">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Experience</h2>
+                <p class="text-lg text-zinc-300">Work history and professional background.</p>
+            </div>
 
-    <!-- 4. SUBTLE INTERACTIVITY (SCROLL REVEAL JS) -->
-    <script>
-        const updateTheme = () => {
-            const hour = new Date().getHours();
-            const root = document.documentElement;
-            let color;
-            let glow;
+            <div class="md:col-span-2 space-y-12">
 
-            if (hour >= 0 && hour < 6) {
-                color = '#0044ff'; // Deep Blue
-                glow = 'rgba(0, 68, 255, 0.4)';
-            } else if (hour >= 6 && hour < 12) {
-                color = '#00ff88'; // Green
-                glow = 'rgba(0, 255, 136, 0.4)';
-            } else if (hour >= 12 && hour < 15) {
-                color = '#00e5ff'; // Your Electric Blue
-                glow = 'rgba(0, 229, 255, 0.4)';
-            } else if (hour >= 15 && hour < 18) {
-                color = '#ff9100'; // Orange
-                glow = 'rgba(255, 145, 0, 0.4)';
-            } else if (hour >= 18 && hour < 20) {
-                color = '#ff3d00'; // Red
-                glow = 'rgba(255, 61, 0, 0.4)';
-            } else {
-                color = '#d500f9'; // Purple
-                glow = 'rgba(213, 0, 249, 0.4)';
-            }
+                <!-- Job 1 -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-zinc-200">Junior Software Engineer</h3>
+                        <span class="text-xs font-mono text-zinc-500">2025 - 2026</span>
+                    </div>
+                    <p class="text-sm font-medium text-zinc-400">Draft Solutions</p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Promoted into a full-time engineering lead role to scale the internal tools ecosystem; recruited, onboarded, and managed a team of two developers, establishing clear task distribution and code quality standards.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Architected and launched Orca, a custom budget-processing platform designed to streamline financial workflows, accelerate approvals, and reduce manual calculations.
+                    </p>
+                </div>
 
-            root.style.setProperty('--accent', color);
-            root.style.setProperty('--accent-glow', glow);
-        };
+                <!-- Job 2 -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-zinc-200">Software Engineering Intern</h3>
+                        <span class="text-xs font-mono text-zinc-500">2024 - 2025</span>
+                    </div>
+                    <p class="text-sm font-medium text-zinc-400">Draft Solutions</p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Spearheaded internal digital transformation by identifying operational bottlenecks and building custom software to enforce data integrity across legacy workflows.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Architected and launched custom Python web applications for task management, dynamic report generation, and multi-source data consolidation.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Conducted end-to-end user research and requirement gathering directly with stakeholders, translating non-technical business needs into technical specifications and production-ready applications.
+                    </p>
+                </div>
 
+                <!-- Job 3 -->
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-base font-semibold text-zinc-200">Software Engineering Intern</h3>
+                        <span class="text-xs font-mono text-zinc-500">2021 - 2023</span>
+                    </div>
+                    <p class="text-sm font-medium text-zinc-400">Spark Systems</p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Engineered high-throughput .NET tools to analyze banking contracts, implementing automated risk-scoring logic and rules engines to detect fraudulent activity prior to settlement.
+                    </p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Architected Python RPA solutions leveraging custom web scrapers and automation libraries to extract, transform, and pipe data from legacy API-less endpoints into modern data pipelines.
+                    </p>
+                </div>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const reveals = document.querySelectorAll(".reveal");
+            </div>
+        </section>
 
-            const revealOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("active");
-                        // Optional: Stop observing once revealed
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1, // Trigger when 10% of the element is visible
-                rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the bottom
-            });
+        <!-- Technologies & Skills -->
+        <section class="grid gap-12 md:grid-cols-3">
+            <div class="space-y-2 md:col-span-1">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Core Stack</h2>
+                <p class="text-lg text-zinc-300">Languages and tools I use frequently.</p>
+            </div>
 
-            reveals.forEach(reveal => {
-                revealOnScroll.observe(reveal);
-            });
-            
-            // Trigger immediately for items already in viewport on load
-            setTimeout(() => {
-                reveals.forEach(reveal => {
-                    const rect = reveal.getBoundingClientRect();
-                    if(rect.top < window.innerHeight) {
-                        reveal.classList.add("active");
-                    }
-                });
-            }, 100);
+            <div class="md:col-span-2 space-y-8">
+                <div>
+                    <h3 class="text-sm font-medium text-zinc-400 mb-3">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">TypeScript</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Go</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">C/C++</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">C#</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Python</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">SQL</span>
+                    </div>
+                </div>
 
-            // Run on page load
-            updateTheme();
+                <div>
+                    <h3 class="text-sm font-medium text-zinc-400 mb-3">Frameworks & Environments</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Gin</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Spring Boot</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Flask</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">FastAPI</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Vite</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Tailwind CSS</span>
+                    </div>
+                </div>
 
-            // Check every minute in case the user leaves the tab open during a transition
-            setInterval(updateTheme, 60000);
-        });
-    </script>
+                <div>
+                    <h3 class="text-sm font-medium text-zinc-400 mb-3">Infrastructure & Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Docker</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">PostgreSQL</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Redis</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">AWS</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Git / GitHub Actions</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">Linux</span>
+                        <span
+                            class="rounded bg-zinc-900 border border-zinc-800 px-3 py-1 text-xs text-zinc-300">.NET Core</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Connect -->
+        <section id="contact" class="border-t border-zinc-900 pt-16">
+            <div class="mx-auto max-w-xl text-center space-y-6">
+                <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Connect</h2>
+                <h3 class="text-2xl font-light text-zinc-200">Let's discuss development</h3>
+                <p class="text-sm text-zinc-400 leading-relaxed">
+                    I am regularly looking for feedback and project collaboration. If you would like to discuss
+                    engineering problems or system architectures, feel free to reach out.
+                </p>
+                <div class="flex justify-center gap-6 pt-4">
+                    <a href="mailto:tallys.comercial@gmail.com"
+                        class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-4 h-4">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0l-7.5-4.615a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                        </svg>
+                        Email
+                    </a>
+                    <a href="https://github.com/Talkys" target="_blank" rel="noopener noreferrer"
+                        class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2">
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/tallys-assis-271631197/" target="_blank" rel="noopener noreferrer"
+                        class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors flex items-center gap-2">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-900 bg-zinc-950 py-8">
+        <div class="mx-auto max-w-5xl px-4 text-center text-xs text-zinc-600 md:px-8">
+            <p>&copy; 2026 Tallys Assis. All rights reserved.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>
