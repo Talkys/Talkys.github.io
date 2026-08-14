@@ -7,26 +7,29 @@
     <title>Tallys Assis</title>
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="/bg.js"></script>
 </head>
 
 <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white font-sans">
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
     <!-- Header / Navigation -->
     <header class="sticky top-0 z-50 w-full border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
         <div class="mx-auto flex max-w-5xl items-center justify-between p-4 md:px-8">
-        <a href="/index.html" class="text-sm font-semibold tracking-wider hover:text-zinc-400 transition-colors">
-          Tallys Assis
-        </a>
-        <nav class="flex items-center gap-6 text-sm text-zinc-400">
-          <a href="/about.html" class="hover:text-zinc-100 transition-colors">About</a>
-          <a href="/projects.html" class="hover:text-zinc-100 transition-colors">Projects</a>
-          <a href="/experience.html" class="hover:text-zinc-100 transition-colors">Experience</a>
-          <a href="/contact.html" class="hover:text-zinc-100 transition-colors">Contact</a>
-        </nav>
-      </div>
+            <a href="/index.html"
+                class="text-xs sm:text-sm font-semibold tracking-wider hover:text-zinc-400 transition-colors whitespace-nowrap">
+                Tallys Assis
+            </a>
+            <nav class="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm text-zinc-400">
+                <a href="/about.html" class="hover:text-zinc-100 transition-colors">About</a>
+                <a href="/projects.html" class="hover:text-zinc-100 transition-colors">Projects</a>
+                <a href="/experience.html" class="hover:text-zinc-100 transition-colors">Experience</a>
+                <a href="/contact.html" class="hover:text-zinc-100 transition-colors">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-24 space-y-32">
+    <main class="relative z-10 mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-24 space-y-32">
 
         <!-- Hero Section -->
         <section id="about" class="space-y-6 max-w-3xl pt-8">
@@ -277,7 +280,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-zinc-900 bg-zinc-950 py-8">
+    <footer class="relative z-10 border-t border-zinc-900 bg-zinc-950 py-8">
         <div class="mx-auto max-w-5xl px-4 text-center text-xs text-zinc-600 md:px-8">
             <p>&copy; 2026 Tallys Assis. All rights reserved.</p>
         </div>
