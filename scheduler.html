@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otimizador de trabalho</title>
+    <title data-i18n="appTitle">Otimizador de Trabalho</title>
     <style>
         :root {
             --bg: #000000;
@@ -51,7 +51,9 @@
         header {
             margin-bottom: 1.5rem;
             flex-shrink: 0;
-            /* Keep header fixed at the top */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
 
         h2 {
@@ -64,6 +66,19 @@
         p.subtitle {
             color: var(--muted);
             font-size: 0.95rem;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-switch select {
+            width: auto;
+            padding: 0.35rem 0.6rem;
+            font-size: 0.85rem;
+            cursor: pointer;
         }
 
         /* Make grid expand to fill remaining viewport height */
@@ -293,12 +308,20 @@
 
 <body>
 
-    <div id="toast" class="copied-toast">Link copiado para a área de transferência!</div>
+    <div id="toast" class="copied-toast" data-i18n="toastCopied">Link copiado para a área de transferência!</div>
 
     <div class="container">
         <header>
-            <h2>Otimizar rotina</h2>
-            <p class="subtitle">Distribui as horas pendentes ou excedentes durante do mês atual</p>
+            <div>
+                <h2 data-i18n="title">Otimizar rotina</h2>
+                <p class="subtitle" data-i18n="subtitle">Distribui as horas pendentes ou excedentes durante o mês atual</p>
+            </div>
+            <div class="lang-switch">
+                <select id="lang_select" onchange="setLanguage(this.value)">
+                    <option value="pt-br">PT-BR</option>
+                    <option value="en-us">EN-US</option>
+                </select>
+            </div>
         </header>
 
         <div class="grid">
@@ -306,55 +329,55 @@
                 <div class="card-content">
                     <form id="scheduleForm">
                         <div class="form-group">
-                            <label for="HL">Horas Lançadas (HL)</label>
+                            <label for="HL" data-i18n="lblHL">Horas Lançadas (HL)</label>
                             <input type="number" id="HL" step="0.1" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="TM">Horas a trabalhar no mês (TM)</label>
+                            <label for="TM" data-i18n="lblTM">Horas a trabalhar no mês (TM)</label>
                             <input type="number" id="TM" step="0.1" value="160">
                         </div>
                         <div class="form-group">
-                            <label for="bank">Banco de horas</label>
+                            <label for="bank" data-i18n="lblBank">Banco de horas</label>
                             <input type="number" id="bank" step="0.1" value="0">
                         </div>
                         <div class="form-group">
-                            <label for="aggression">Agressividade (0.0 - 1.0)</label>
+                            <label for="aggression" data-i18n="lblAggression">Agressividade (0.0 - 1.0)</label>
                             <input type="range" id="aggression" min="0" max="1" value="0.3" step="0.01">
                         </div>
                         <div class="form-group">
-                            <label for="workday">Dia de trabalho (hrs)</label>
+                            <label for="workday" data-i18n="lblWorkday">Dia de trabalho (hrs)</label>
                             <input type="number" id="workday" step="0.5" value="8">
                         </div>
                         <div class="form-group">
-                            <label for="day_period">Contexto do dia</label>
+                            <label for="day_period" data-i18n="lblDayPeriod">Contexto do dia</label>
                             <select id="day_period">
-                                <option value="start">Começo (Nenhum lançamento hoje)</option>
-                                <option value="middle">Meio (Primeira parte do dia lançada)</option>
-                                <option value="end">Fim (Começar amanhã)</option>
+                                <option value="start" data-i18n="optStart">Começo (Nenhum lançamento hoje)</option>
+                                <option value="middle" data-i18n="optMiddle">Meio (Primeira parte do dia lançada)</option>
+                                <option value="end" data-i18n="optEnd">Fim (Começar amanhã)</option>
                             </select>
                         </div>
 
-                        <div class="section-title">Ajustes de Horário</div>
+                        <div class="section-title" data-i18n="titleScheduleAdjust">Ajustes de Horário</div>
 
                         <div class="form-group">
-                            <label for="work_start">Início da jornada</label>
+                            <label for="work_start" data-i18n="lblWorkStart">Início da jornada</label>
                             <input type="time" id="work_start" value="">
                         </div>
                         <div class="form-group">
-                            <label for="lunch_start">Início do almoço</label>
+                            <label for="lunch_start" data-i18n="lblLunchStart">Início do almoço</label>
                             <input type="time" id="lunch_start" value="12:00">
                         </div>
                         <div class="form-group">
-                            <label for="lunch_duration">Duração do almoço</label>
+                            <label for="lunch_duration" data-i18n="lblLunchDuration">Duração do almoço</label>
                             <select id="lunch_duration">
-                                <option value="60">1 hora (60 min)</option>
-                                <option value="30">30 minutos</option>
+                                <option value="60" data-i18n="optLunch1h">1 hora (60 min)</option>
+                                <option value="30" data-i18n="optLunch30m">30 minutos</option>
                             </select>
                         </div>
 
                         <div class="actions">
-                            <button type="button" class="btn btn-primary" onclick="copyShareUrl()">Copiar Link</button>
-                            <button type="button" class="btn" onclick="resetDefaults()">Resetar</button>
+                            <button type="button" class="btn btn-primary" onclick="copyShareUrl()" data-i18n="btnCopy">Copiar Link</button>
+                            <button type="button" class="btn" onclick="resetDefaults()" data-i18n="btnReset">Resetar</button>
                         </div>
 
                     </form>
@@ -365,15 +388,15 @@
                 <div class="card-content">
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <div class="stat-label">Horas restantes</div>
+                            <div class="stat-label" data-i18n="statRemaining">Horas restantes</div>
                             <div class="stat-value" id="statRemaining">0h</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-label">Dias</div>
+                            <div class="stat-label" data-i18n="statDays">Dias</div>
                             <div class="stat-value" id="statDays">0</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-label">Fim do mês</div>
+                            <div class="stat-label" data-i18n="statDeadline">Fim do mês</div>
                             <div class="stat-value" id="statDeadline">-</div>
                         </div>
                     </div>
@@ -381,10 +404,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Dia</th>
-                                <th>Data</th>
-                                <th>Horas</th>
-                                <th>Sugestão de Horário</th>
+                                <th data-i18n="thDay">Dia</th>
+                                <th data-i18n="thDate">Data</th>
+                                <th data-i18n="thHours">Horas</th>
+                                <th data-i18n="thSchedule">Sugestão de Horário</th>
                             </tr>
                         </thead>
                         <tbody id="scheduleTable">
@@ -397,6 +420,92 @@
     </div>
 
     <script>
+        const translations = {
+            'pt-br': {
+                appTitle: "Otimizador de trabalho",
+                title: "Otimizar rotina",
+                subtitle: "Distribui as horas pendentes ou excedentes durante o mês atual",
+                lblHL: "Horas Lançadas (HL)",
+                lblTM: "Horas a trabalhar no mês (TM)",
+                lblBank: "Banco de horas",
+                lblAggression: "Agressividade (0.0 - 1.0)",
+                lblWorkday: "Dia de trabalho (hrs)",
+                lblDayPeriod: "Contexto do dia",
+                optStart: "Começo (Nenhum lançamento hoje)",
+                optMiddle: "Meio (Primeira parte do dia lançada)",
+                optEnd: "Fim (Começar amanhã)",
+                titleScheduleAdjust: "Ajustes de Horário",
+                lblWorkStart: "Início da jornada",
+                lblLunchStart: "Início do almoço",
+                lblLunchDuration: "Duração do almoço",
+                optLunch1h: "1 hora (60 min)",
+                optLunch30m: "30 minutos",
+                btnCopy: "Copiar Link",
+                btnReset: "Resetar",
+                statRemaining: "Horas restantes",
+                statDays: "Dias",
+                statDeadline: "Fim do mês",
+                thDay: "Dia",
+                thDate: "Data",
+                thHours: "Horas",
+                thSchedule: "Sugestão de Horário",
+                toastCopied: "Link copiado para a área de transferência!",
+                badgeMiddle: "Meio-dia",
+                dayPrefix: "Dia"
+            },
+            'en-us': {
+                appTitle: "Work Optimizer",
+                title: "Optimize Routine",
+                subtitle: "Distributes remaining or excess hours across the current month",
+                lblHL: "Logged Hours (HL)",
+                lblTM: "Monthly Target Hours (TM)",
+                lblBank: "Time Bank",
+                lblAggression: "Aggressiveness (0.0 - 1.0)",
+                lblWorkday: "Workday Length (hrs)",
+                lblDayPeriod: "Current Context",
+                optStart: "Start (No logs today)",
+                optMiddle: "Middle (First half logged today)",
+                optEnd: "End (Start tomorrow)",
+                titleScheduleAdjust: "Schedule Adjustments",
+                lblWorkStart: "Work Start Time",
+                lblLunchStart: "Lunch Start Time",
+                lblLunchDuration: "Lunch Duration",
+                optLunch1h: "1 hour (60 min)",
+                optLunch30m: "30 minutes",
+                btnCopy: "Copy Link",
+                btnReset: "Reset",
+                statRemaining: "Remaining Hours",
+                statDays: "Days",
+                statDeadline: "End of Month",
+                thDay: "Day",
+                thDate: "Date",
+                thHours: "Hours",
+                thSchedule: "Suggested Schedule",
+                toastCopied: "Link copied to clipboard!",
+                badgeMiddle: "Half-day",
+                dayPrefix: "Day"
+            }
+        };
+
+        let currentLang = 'pt-br';
+
+        function setLanguage(lang) {
+            currentLang = translations[lang] ? lang : 'pt-br';
+            document.documentElement.lang = currentLang === 'pt-br' ? 'pt-BR' : 'en-US';
+            document.getElementById('lang_select').value = currentLang;
+            localStorage.setItem('pref_lang', currentLang);
+
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    elem.innerText = translations[currentLang][key];
+                }
+            });
+
+            document.title = translations[currentLang].appTitle;
+            runCalculation();
+        }
+
         function timeToMinutes(timeStr) {
             if (!timeStr) return null;
             const [h, m] = timeStr.split(':').map(Number);
@@ -416,20 +525,15 @@
             const totalMinutes = Math.round(dailyHours * 60);
             const { workStart, lunchStart, lunchDuration } = config;
 
-            // Scenario A: Custom Preferred Start Time is Provided
             if (workStart !== null) {
                 let entry1 = workStart;
                 let exit1 = lunchStart;
-
-                // Shift 1 time available before lunch
                 let shift1Cap = Math.max(0, exit1 - entry1);
 
                 if (totalMinutes <= shift1Cap) {
-                    // Work fits entirely in the morning shift
                     exit1 = entry1 + totalMinutes;
                     return `${formatTime(entry1 / 60)} - ${formatTime(exit1 / 60)}`;
                 } else {
-                    // Work spills over past lunch
                     let entry2 = exit1 + lunchDuration;
                     let remainingMinutes = totalMinutes - shift1Cap;
                     let exit2 = entry2 + remainingMinutes;
@@ -438,7 +542,6 @@
                 }
             }
 
-            // Scenario B: Automatic Time Centering (Legacy Behavior adaptively updated)
             const duration1 = Math.ceil(totalMinutes / 2);
             const duration2 = Math.floor(totalMinutes / 2);
 
@@ -448,7 +551,6 @@
             let entry2 = exit1 + lunchDuration;
             let exit2 = entry2 + duration2;
 
-            // Boundary checks (7:00 AM - 9:00 PM)
             const minTime = 7 * 60;
             const maxTime = 21 * 60;
 
@@ -475,7 +577,7 @@
 
             while (curr <= endDate) {
                 const dayOfWeek = curr.getDay();
-                if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Mon-Fri
+                if (dayOfWeek !== 0 && dayOfWeek !== 6) {
                     if (curr.getTime() === startDate.getTime() && isMiddle) {
                         days += 0.5;
                     } else {
@@ -524,7 +626,6 @@
             const stdDay = parseFloat(document.getElementById('workday').value) || 8;
             const dayPeriod = document.getElementById('day_period').value;
 
-            // Schedule Config
             const workStart = timeToMinutes(document.getElementById('work_start').value);
             const lunchStart = timeToMinutes(document.getElementById('lunch_start').value) ?? (12 * 60);
             const lunchDuration = parseInt(document.getElementById('lunch_duration').value, 10) || 60;
@@ -548,16 +649,18 @@
             const schedule = calculateSchedule(hl, tm, bank, workdays, stdDay, aggression, isMiddle);
             const netRemaining = Math.max(0, (tm - hl) - bank);
 
-            // Update Stats
             document.getElementById('statRemaining').innerText = `${netRemaining.toFixed(1)}h`;
             document.getElementById('statDays').innerText = `${workdays.toFixed(1)}`;
             const [dlYear, dlMonth, dlDay] = deadline.toISOString().split('T')[0].split('-');
-            document.getElementById('statDeadline').innerText = `${dlDay}/${dlMonth}/${dlYear}`;
+            
+            document.getElementById('statDeadline').innerText = currentLang === 'en-us' 
+                ? `${dlMonth}/${dlDay}/${dlYear}` 
+                : `${dlDay}/${dlMonth}/${dlYear}`;
 
-            // Populate Table
             const tbody = document.getElementById('scheduleTable');
             tbody.innerHTML = '';
 
+            const t = translations[currentLang];
             let currDate = new Date(startDate);
             schedule.forEach((hrs, idx) => {
                 while (currDate.getDay() === 0 || currDate.getDay() === 6) {
@@ -569,14 +672,14 @@
                 if (m === 60) { h += 1; m = 0; }
 
                 const [year, month, day] = currDate.toISOString().split('T')[0].split('-');
-                const dateStr = `${day}/${month}/${year}`;
-                const tag = (idx === 0 && isMiddle) ? '<span class="badge">Meio-dia</span>' : '';
+                const dateStr = currentLang === 'en-us' ? `${month}/${day}/${year}` : `${day}/${month}/${year}`;
+                const tag = (idx === 0 && isMiddle) ? `<span class="badge">${t.badgeMiddle}</span>` : '';
 
                 const timeSuggestion = calculateSuggestedTimes(hrs, timeConfig);
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>Dia ${String(idx + 1).padStart(2, '0')}${tag}</td>
+                    <td>${t.dayPrefix} ${String(idx + 1).padStart(2, '0')}${tag}</td>
                     <td>${dateStr}</td>
                     <td>${h}h ${String(m).padStart(2, '0')}m (${hrs.toFixed(2)})</td>
                     <td>${timeSuggestion}</td>
@@ -593,6 +696,7 @@
             ['HL', 'TM', 'bank', 'aggression', 'workday', 'day_period', 'work_start', 'lunch_start', 'lunch_duration'].forEach(id => {
                 params.set(id, document.getElementById(id).value);
             });
+            params.set('lang', currentLang);
             window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
         }
 
@@ -603,6 +707,9 @@
                     document.getElementById(id).value = params.get(id);
                 }
             });
+
+            const langParam = params.get('lang') || localStorage.getItem('pref_lang') || 'pt-br';
+            setLanguage(langParam);
         }
 
         let toastTimeout;
@@ -639,7 +746,6 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             loadParamsFromUrl();
-            runCalculation();
         });
     </script>
 </body>
