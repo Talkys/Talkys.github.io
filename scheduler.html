@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otimizador de trabalho</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --border: #334155;
+            --accent: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 1rem 0.5rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            margin-top: 0.1rem;
+        }
+
+        p.subtitle {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 320px 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.375rem;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 0.625rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background: #0f172a;
+            color: var(--text);
+        }
+
+        input:focus,
+        select:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: -1px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-card {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th,
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e3a8a;
+            color: #93c5fd;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            font-weight: 600;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.625rem;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn:hover:not(.btn-primary) {
+            background: #334155;
+        }
+
+        .copied-toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(30, 41, 59, 0.95);
+            color: #f8fafc;
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+        }
+
+        .copied-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .copied-toast::before {
+            content: "✓";
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            background: #10b981;
+            color: #0f172a;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="toast" class="copied-toast">Link copiado para a área de transferência!</div>
+
+    <div class="container">
+        <header>
+            <h2>Otimizar rotina</h2>
+            <p class="subtitle">Distribui as horas pendentes ou excedentes durante do mês atual</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <form id="scheduleForm">
+                    <div class="form-group">
+                        <label for="HL">Horas Lançadas (HL)</label>
+                        <input type="number" id="HL" step="0.1" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="TM">Hours a trabalhar no mês (TM)</label>
+                        <input type="number" id="TM" step="0.1" value="160">
+                    </div>
+                    <div class="form-group">
+                        <label for="bank">Banco de horas/label>
+                            <input type="number" id="bank" step="0.1" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="aggression">Aggressividade (0.0 - 1.0)</label>
+                        <input type="number" id="aggression" step="0.05" min="0" max="1" value="0.3">
+                    </div>
+                    <div class="form-group">
+                        <label for="workday">Dia de trabalho (hrs)</label>
+                        <input type="number" id="workday" step="0.5" value="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="day_period">Contexto do dia</label>
+                        <select id="day_period">
+                            <option value="start">Começo (Nenhum lançamento hoje)</option>
+                            <option value="middle">Meio (Primeira parte do dia lançada)</option>
+                            <option value="end">Fim (Começar amanhã)</option>
+                        </select>
+                    </div>
+
+                    <div class="actions">
+                        <button type="button" class="btn btn-primary" onclick="copyShareUrl()">Copiar Link</button>
+                        <button type="button" class="btn" onclick="resetDefaults()">Resetar</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Horas restantes</div>
+                        <div class="stat-value" id="statRemaining">0h</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Dias</div>
+                        <div class="stat-value" id="statDays">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Fim do mês</div>
+                        <div class="stat-value" id="statDeadline">-</div>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dia</th>
+                            <th>Data</th>
+                            <th>Horas</th>
+                            <th>Horas (dec)</th>
+                            <th>Sugestão de Horário</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleTable">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatTime(decimalHours) {
+            let h = Math.floor(decimalHours);
+            let m = Math.round((decimalHours - h) * 60);
+            if (m === 60) { h += 1; m = 0; }
+            return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+        }
+
+        function calculateSuggestedTimes(dailyHours) {
+            if (dailyHours <= 0) return "-";
+
+            const totalMinutes = Math.round(dailyHours * 60);
+
+            // Give odd extra minutes to the first shift
+            const duration1 = Math.ceil(totalMinutes / 2);
+            const duration2 = Math.floor(totalMinutes / 2);
+
+            // Morning shift ends at 12:00 (720 minutes from midnight)
+            let exit1 = 12 * 60;
+            let entry1 = exit1 - duration1;
+
+            // Afternoon shift starts at 13:00 (780 minutes from midnight)
+            let entry2 = 13 * 60;
+            let exit2 = entry2 + duration2;
+
+            // Boundary check for 07:00 (420 min) to 21:00 (1260 min)
+            const minTime = 7 * 60;
+            const maxTime = 21 * 60;
+
+            if (entry1 < minTime) {
+                const diff = minTime - entry1;
+                entry1 += diff;
+                exit1 += diff;
+                entry2 += diff;
+                exit2 += diff;
+            } else if (exit2 > maxTime) {
+                const diff = exit2 - maxTime;
+                entry1 -= diff;
+                exit1 -= diff;
+                entry2 -= diff;
+                exit2 -= diff;
+            }
+
+            return `${formatTime(entry1 / 60)} - ${formatTime(exit1 / 60)} <br> ${formatTime(entry2 / 60)} - ${formatTime(exit2 / 60)}`;
+        }
+
+        function getWorkingDays(startDate, endDate, isMiddle) {
+            let days = 0.0;
+            let curr = new Date(startDate);
+
+            while (curr <= endDate) {
+                const dayOfWeek = curr.getDay();
+                if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Mon-Fri
+                    if (curr.getTime() === startDate.getTime() && isMiddle) {
+                        days += 0.5;
+                    } else {
+                        days += 1.0;
+                    }
+                }
+                curr.setDate(curr.getDate() + 1);
+            }
+            return days;
+        }
+
+        function calculateSchedule(hl, tm, bank, remainingDays, stdDay, aggression, isMiddle) {
+            const remainingHours = (tm - hl) - bank;
+            if (remainingDays <= 0 || remainingHours <= 0) return [];
+
+            let schedule = [];
+            let hoursLeft = remainingHours;
+            const totalSlots = Math.floor(isMiddle ? remainingDays + 0.5 : remainingDays);
+
+            for (let i = 0; i < totalSlots; i++) {
+                const isTodayMiddle = isMiddle && (i === 0);
+                const daysLeft = remainingDays - (isMiddle ? (i > 0 ? i - 0.5 : 0) : i * 1.0);
+                const evenRate = daysLeft > 0 ? hoursLeft / daysLeft : hoursLeft;
+                const currentStdDay = isTodayMiddle ? stdDay * 0.5 : stdDay;
+
+                let targetHours = currentStdDay + (evenRate - currentStdDay) * (1 + aggression);
+                const maxDailyCap = currentStdDay * 1.5;
+                let allocated = Math.min(maxDailyCap, Math.max(0.0, targetHours));
+
+                if (daysLeft <= 1.0) {
+                    allocated = Math.max(0.0, hoursLeft);
+                }
+
+                allocated = Math.min(allocated, hoursLeft);
+                schedule.push(Number(allocated.toFixed(2)));
+                hoursLeft -= allocated;
+            }
+            return schedule;
+        }
+
+        function runCalculation() {
+            const hl = parseFloat(document.getElementById('HL').value) || 0;
+            const tm = parseFloat(document.getElementById('TM').value) || 0;
+            const bank = parseFloat(document.getElementById('bank').value) || 0;
+            const aggression = parseFloat(document.getElementById('aggression').value) || 0;
+            const stdDay = parseFloat(document.getElementById('workday').value) || 8;
+            const dayPeriod = document.getElementById('day_period').value;
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            let startDate = new Date(today);
+            if (dayPeriod === 'end') {
+                startDate.setDate(startDate.getDate() + 1);
+            }
+
+            const year = startDate.getFullYear();
+            const month = startDate.getMonth();
+            const deadline = new Date(year, month + 1, 0);
+
+            const isMiddle = dayPeriod === 'middle';
+            const workdays = getWorkingDays(startDate, deadline, isMiddle);
+            const schedule = calculateSchedule(hl, tm, bank, workdays, stdDay, aggression, isMiddle);
+            const netRemaining = Math.max(0, (tm - hl) - bank);
+
+            // Update Stats
+            document.getElementById('statRemaining').innerText = `${netRemaining.toFixed(1)}h`;
+            document.getElementById('statDays').innerText = `${workdays.toFixed(1)}`;
+            const [dlYear, dlMonth, dlDay] = deadline.toISOString().split('T')[0].split('-');
+            document.getElementById('statDeadline').innerText = `${dlDay}/${dlMonth}/${dlYear}`;
+
+            // Populate Table
+            const tbody = document.getElementById('scheduleTable');
+            tbody.innerHTML = '';
+
+            let currDate = new Date(startDate);
+            schedule.forEach((hrs, idx) => {
+                while (currDate.getDay() === 0 || currDate.getDay() === 6) {
+                    currDate.setDate(currDate.getDate() + 1);
+                }
+
+                let h = Math.floor(hrs);
+                let m = Math.round((hrs - h) * 60);
+                if (m === 60) { h += 1; m = 0; }
+
+                const [year, month, day] = currDate.toISOString().split('T')[0].split('-');
+                const dateStr = `${day}/${month}/${year}`;
+                const tag = (idx === 0 && isMiddle) ? '<span class="badge">Meio-dia</span>' : '';
+
+                const timeSuggestion = calculateSuggestedTimes(hrs);
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+        <td>Day ${String(idx + 1).padStart(2, '0')}${tag}</td>
+        <td>${dateStr}</td>
+        <td>${h}h ${String(m).padStart(2, '0')}m</td>
+        <td>${hrs.toFixed(2)}</td>
+        <td>${timeSuggestion}</td>
+    `;
+                tbody.appendChild(tr);
+                currDate.setDate(currDate.getDate() + 1);
+            });
+
+            updateUrlParams();
+        }
+
+        function updateUrlParams() {
+            const params = new URLSearchParams();
+            ['HL', 'TM', 'bank', 'aggression', 'workday', 'day_period'].forEach(id => {
+                params.set(id, document.getElementById(id).value);
+            });
+            window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+        }
+
+        function loadParamsFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            ['HL', 'TM', 'bank', 'aggression', 'workday', 'day_period'].forEach(id => {
+                if (params.has(id)) {
+                    document.getElementById(id).value = params.get(id);
+                }
+            });
+        }
+
+        let toastTimeout;
+
+        function copyShareUrl() {
+            navigator.clipboard.writeText(window.location.href);
+            const toast = document.getElementById('toast');
+
+            // Clear any active timer if clicked repeatedly so it doesn't bug the page
+            if (toastTimeout) clearTimeout(toastTimeout);
+
+            toast.classList.add('show');
+
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        function resetDefaults() {
+            document.getElementById('HL').value = 0;
+            document.getElementById('TM').value = 160;
+            document.getElementById('bank').value = 0;
+            document.getElementById('aggression').value = 0.3;
+            document.getElementById('workday').value = 8;
+            document.getElementById('day_period').value = 'start';
+            runCalculation();
+        }
+
+        document.querySelectorAll('#scheduleForm input, #scheduleForm select').forEach(elem => {
+            elem.addEventListener('input', runCalculation);
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadParamsFromUrl();
+            runCalculation();
+        });
+    </script>
+</body>
+
+</html>
