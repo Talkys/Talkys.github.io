@@ -140,6 +140,7 @@
         td {
             padding: 0.75rem;
             border-bottom: 1px solid var(--border);
+            text-align: center;
         }
 
         th {
@@ -259,7 +260,7 @@
                         <input type="number" id="HL" step="0.1" value="0">
                     </div>
                     <div class="form-group">
-                        <label for="TM">Hours a trabalhar no mês (TM)</label>
+                        <label for="TM">Horas a trabalhar no mês (TM)</label>
                         <input type="number" id="TM" step="0.1" value="160">
                     </div>
                     <div class="form-group">
@@ -267,8 +268,8 @@
                             <input type="number" id="bank" step="0.1" value="0">
                     </div>
                     <div class="form-group">
-                        <label for="aggression">Aggressividade (0.0 - 1.0)</label>
-                        <input type="number" id="aggression" step="0.05" min="0" max="1" value="0.3">
+                        <label for="aggression">Agressividade (0.0 - 1.0)</label>
+                        <input type="range" id="aggression" min="0" max="1" value="0.3" step="0.01">
                     </div>
                     <div class="form-group">
                         <label for="workday">Dia de trabalho (hrs)</label>
@@ -313,7 +314,6 @@
                             <th>Dia</th>
                             <th>Data</th>
                             <th>Horas</th>
-                            <th>Horas (dec)</th>
                             <th>Sugestão de Horário</th>
                         </tr>
                     </thead>
@@ -471,10 +471,9 @@
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-        <td>Day ${String(idx + 1).padStart(2, '0')}${tag}</td>
+        <td>Dia ${String(idx + 1).padStart(2, '0')}${tag}</td>
         <td>${dateStr}</td>
-        <td>${h}h ${String(m).padStart(2, '0')}m</td>
-        <td>${hrs.toFixed(2)}</td>
+        <td>${h}h ${String(m).padStart(2, '0')}m (${hrs.toFixed(2)})</td>
         <td>${timeSuggestion}</td>
     `;
                 tbody.appendChild(tr);
