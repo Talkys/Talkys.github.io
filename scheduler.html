@@ -24,7 +24,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* Prevent full-page scrolling */
         html,
         body {
             height: 100%;
@@ -35,10 +34,8 @@
             background-color: var(--bg);
             color: var(--text);
             padding-top: 10px;
-
         }
 
-        /* Set container to full viewport height minus body padding */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -81,14 +78,12 @@
             cursor: pointer;
         }
 
-        /* Make grid expand to fill remaining viewport height */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
             flex: 1;
             min-height: 0;
-            /* Critical for flex/grid nested child scrolling */
         }
 
         @media (min-width: 768px) {
@@ -97,14 +92,12 @@
             }
         }
 
-        /* Cards now scroll independently */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            /* Clips the inner scrollbar inside the rounded corners */
             display: flex;
             flex-direction: column;
         }
@@ -218,17 +211,6 @@
             background: rgba(255, 255, 255, 0.03);
         }
 
-        .badge {
-            display: inline-block;
-            background: #8a8a8a;
-            color: #fdfdfd;
-            font-size: 0.75rem;
-            padding: 0.125rem 0.375rem;
-            border-radius: 4px;
-            margin-left: 0.5rem;
-            font-weight: 600;
-        }
-
         .actions {
             display: flex;
             gap: 0.5rem;
@@ -303,6 +285,10 @@
             font-weight: 800;
             border-radius: 50%;
         }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -314,7 +300,8 @@
         <header>
             <div>
                 <h2 data-i18n="title">Otimizar rotina</h2>
-                <p class="subtitle" data-i18n="subtitle">Distribui as horas pendentes ou excedentes durante o mês atual</p>
+                <p class="subtitle" data-i18n="subtitle">Distribui as horas pendentes ou excedentes durante o mês atual
+                </p>
             </div>
             <div class="lang-switch">
                 <select id="lang_select" onchange="setLanguage(this.value)">
@@ -352,14 +339,26 @@
                             <label for="day_period" data-i18n="lblDayPeriod">Contexto do dia</label>
                             <select id="day_period">
                                 <option value="start" data-i18n="optStart">Começo (Nenhum lançamento hoje)</option>
-                                <option value="middle" data-i18n="optMiddle">Meio (Primeira parte do dia lançada)</option>
                                 <option value="end" data-i18n="optEnd">Fim (Começar amanhã)</option>
+                                <option value="middle" data-i18n="optMiddle">Meio (Horas da manhã lançadas)</option>
                             </select>
+                        </div>
+
+                        <div id="middle_inputs" style="display: none;">
+                            <div class="form-group">
+                                <label for="morning_logged" data-i18n="lblMorningLogged">Horas lançadas hoje de
+                                    manhã</label>
+                                <input type="number" id="morning_logged" step="0.1" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="afternoon_return" data-i18n="lblAfternoonReturn">Retorno da tarde</label>
+                                <input type="time" id="afternoon_return" value="13:00">
+                            </div>
                         </div>
 
                         <div class="section-title" data-i18n="titleScheduleAdjust">Ajustes de Horário</div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="grp_work_start">
                             <label for="work_start" data-i18n="lblWorkStart">Início da jornada</label>
                             <input type="time" id="work_start" value="">
                         </div>
@@ -376,8 +375,10 @@
                         </div>
 
                         <div class="actions">
-                            <button type="button" class="btn btn-primary" onclick="copyShareUrl()" data-i18n="btnCopy">Copiar Link</button>
-                            <button type="button" class="btn" onclick="resetDefaults()" data-i18n="btnReset">Resetar</button>
+                            <button type="button" class="btn btn-primary" onclick="copyShareUrl()"
+                                data-i18n="btnCopy">Copiar Link</button>
+                            <button type="button" class="btn" onclick="resetDefaults()"
+                                data-i18n="btnReset">Resetar</button>
                         </div>
 
                     </form>
@@ -411,7 +412,6 @@
                             </tr>
                         </thead>
                         <tbody id="scheduleTable">
-                            <!-- Populated via JS -->
                         </tbody>
                     </table>
                 </div>
@@ -432,8 +432,10 @@
                 lblWorkday: "Dia de trabalho (hrs)",
                 lblDayPeriod: "Contexto do dia",
                 optStart: "Começo (Nenhum lançamento hoje)",
-                optMiddle: "Meio (Primeira parte do dia lançada)",
                 optEnd: "Fim (Começar amanhã)",
+                optMiddle: "Meio (Horas da manhã lançadas)",
+                lblMorningLogged: "Horas lançadas hoje de manhã",
+                lblAfternoonReturn: "Retorno da tarde",
                 titleScheduleAdjust: "Ajustes de Horário",
                 lblWorkStart: "Início da jornada",
                 lblLunchStart: "Início do almoço",
@@ -450,7 +452,6 @@
                 thHours: "Horas",
                 thSchedule: "Sugestão de Horário",
                 toastCopied: "Link copiado para a área de transferência!",
-                badgeMiddle: "Meio-dia",
                 dayPrefix: "Dia"
             },
             'en-us': {
@@ -464,8 +465,10 @@
                 lblWorkday: "Workday Length (hrs)",
                 lblDayPeriod: "Current Context",
                 optStart: "Start (No logs today)",
-                optMiddle: "Middle (First half logged today)",
                 optEnd: "End (Start tomorrow)",
+                optMiddle: "Middle (Morning hours logged)",
+                lblMorningLogged: "Morning hours logged today",
+                lblAfternoonReturn: "Afternoon return time",
                 titleScheduleAdjust: "Schedule Adjustments",
                 lblWorkStart: "Work Start Time",
                 lblLunchStart: "Lunch Start Time",
@@ -482,7 +485,6 @@
                 thHours: "Hours",
                 thSchedule: "Suggested Schedule",
                 toastCopied: "Link copied to clipboard!",
-                badgeMiddle: "Half-day",
                 dayPrefix: "Day"
             }
         };
@@ -506,6 +508,12 @@
             runCalculation();
         }
 
+        function toggleMiddleInputs() {
+            const period = document.getElementById('day_period').value;
+            const middleInputs = document.getElementById('middle_inputs');
+            middleInputs.style.display = (period === 'middle') ? 'block' : 'none';
+        }
+
         function timeToMinutes(timeStr) {
             if (!timeStr) return null;
             const [h, m] = timeStr.split(':').map(Number);
@@ -519,10 +527,18 @@
             return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
         }
 
-        function calculateSuggestedTimes(dailyHours, config) {
+        function calculateSuggestedTimes(dailyHours, config, isFirstDayMiddle = false) {
             if (dailyHours <= 0) return "-";
 
             const totalMinutes = Math.round(dailyHours * 60);
+
+            // Handle mid-day afternoon-only schedule for Day 1
+            if (isFirstDayMiddle && config.afternoonReturn !== null) {
+                const entry2 = config.afternoonReturn;
+                const exit2 = entry2 + totalMinutes;
+                return `${formatTime(entry2 / 60)} - ${formatTime(exit2 / 60)}`;
+            }
+
             const { workStart, lunchStart, lunchDuration } = config;
 
             if (workStart !== null) {
@@ -571,66 +587,87 @@
             return `${formatTime(entry1 / 60)} - ${formatTime(exit1 / 60)} <br> ${formatTime(entry2 / 60)} - ${formatTime(exit2 / 60)}`;
         }
 
-        function getWorkingDays(startDate, endDate, isMiddle) {
-            let days = 0.0;
+        function getWorkingDays(startDate, endDate) {
+            let days = 0;
             let curr = new Date(startDate);
 
             while (curr <= endDate) {
                 const dayOfWeek = curr.getDay();
                 if (dayOfWeek !== 0 && dayOfWeek !== 6) {
-                    if (curr.getTime() === startDate.getTime() && isMiddle) {
-                        days += 0.5;
-                    } else {
-                        days += 1.0;
-                    }
+                    days += 1;
                 }
                 curr.setDate(curr.getDate() + 1);
             }
             return days;
         }
 
-        function calculateSchedule(hl, tm, bank, remainingDays, stdDay, aggression, isMiddle) {
-            const remainingHours = (tm - hl) - bank;
-            if (remainingDays <= 0 || remainingHours <= 0) return [];
+        function calculateSchedule(hl, tm, bank, totalWorkdays, stdDay, aggression, dayPeriod, morningLogged) {
+            const netRemaining = (tm - hl) - bank;
+            if (totalWorkdays <= 0 || netRemaining <= 0) return [];
 
             let schedule = [];
-            let hoursLeft = remainingHours;
-            const totalSlots = Math.floor(isMiddle ? remainingDays + 0.5 : remainingDays);
 
-            for (let i = 0; i < totalSlots; i++) {
-                const isTodayMiddle = isMiddle && (i === 0);
-                const daysLeft = remainingDays - (isMiddle ? (i > 0 ? i - 0.5 : 0) : i * 1.0);
-                const evenRate = daysLeft > 0 ? hoursLeft / daysLeft : hoursLeft;
-                const currentStdDay = isTodayMiddle ? stdDay * 0.5 : stdDay;
+            if (dayPeriod === 'middle') {
+                // 1. Calculate afternoon hours left for Day 1
+                // Expected full target for Day 1 minus what was already logged in the morning
+                const day1AfternoonTarget = Math.max(0, stdDay - morningLogged);
+                schedule.push(Number(day1AfternoonTarget.toFixed(2)));
 
-                let targetHours = currentStdDay + (evenRate - currentStdDay) * (1 + aggression);
-                const maxDailyCap = currentStdDay * 1.5;
-                let allocated = Math.min(maxDailyCap, Math.max(0.0, targetHours));
+                // 2. Distribute the remaining hours across remaining FUTURE days
+                let hoursLeftForFuture = Math.max(0, netRemaining - day1AfternoonTarget);
+                const futureDays = totalWorkdays - 1;
 
-                if (daysLeft <= 1.0) {
-                    allocated = Math.max(0.0, hoursLeft);
+                for (let i = 0; i < futureDays; i++) {
+                    const daysLeft = futureDays - i;
+                    const evenRate = daysLeft > 0 ? hoursLeftForFuture / daysLeft : hoursLeftForFuture;
+                    const targetFullDay = stdDay + (evenRate - stdDay) * (1 + aggression);
+                    const maxDailyCap = stdDay * 1.5;
+
+                    let allocated = Math.min(maxDailyCap, Math.max(0.0, targetFullDay));
+                    if (daysLeft <= 1.0) allocated = Math.max(0.0, hoursLeftForFuture);
+
+                    allocated = Math.min(allocated, hoursLeftForFuture);
+                    schedule.push(Number(allocated.toFixed(2)));
+                    hoursLeftForFuture -= allocated;
                 }
+            } else {
+                // Normal distribution for 'start' or 'end' contexts
+                let hoursLeft = netRemaining;
+                for (let i = 0; i < totalWorkdays; i++) {
+                    const daysLeft = totalWorkdays - i;
+                    const evenRate = daysLeft > 0 ? hoursLeft / daysLeft : hoursLeft;
+                    const targetFullDay = stdDay + (evenRate - stdDay) * (1 + aggression);
+                    const maxDailyCap = stdDay * 1.5;
 
-                allocated = Math.min(allocated, hoursLeft);
-                schedule.push(Number(allocated.toFixed(2)));
-                hoursLeft -= allocated;
+                    let allocated = Math.min(maxDailyCap, Math.max(0.0, targetFullDay));
+                    if (daysLeft <= 1.0) allocated = Math.max(0.0, hoursLeft);
+
+                    allocated = Math.min(allocated, hoursLeft);
+                    schedule.push(Number(allocated.toFixed(2)));
+                    hoursLeft -= allocated;
+                }
             }
+
             return schedule;
         }
 
         function runCalculation() {
+            toggleMiddleInputs();
+
             const hl = parseFloat(document.getElementById('HL').value) || 0;
             const tm = parseFloat(document.getElementById('TM').value) || 0;
             const bank = parseFloat(document.getElementById('bank').value) || 0;
             const aggression = parseFloat(document.getElementById('aggression').value) || 0;
             const stdDay = parseFloat(document.getElementById('workday').value) || 8;
             const dayPeriod = document.getElementById('day_period').value;
+            const morningLogged = parseFloat(document.getElementById('morning_logged').value) || 0;
+            const afternoonReturn = timeToMinutes(document.getElementById('afternoon_return').value);
 
             const workStart = timeToMinutes(document.getElementById('work_start').value);
             const lunchStart = timeToMinutes(document.getElementById('lunch_start').value) ?? (12 * 60);
             const lunchDuration = parseInt(document.getElementById('lunch_duration').value, 10) || 60;
 
-            const timeConfig = { workStart, lunchStart, lunchDuration };
+            const timeConfig = { workStart, lunchStart, lunchDuration, afternoonReturn };
 
             const today = new Date();
             today.setHours(0, 0, 0, 0);
@@ -644,17 +681,17 @@
             const month = startDate.getMonth();
             const deadline = new Date(year, month + 1, 0);
 
-            const isMiddle = dayPeriod === 'middle';
-            const workdays = getWorkingDays(startDate, deadline, isMiddle);
-            const schedule = calculateSchedule(hl, tm, bank, workdays, stdDay, aggression, isMiddle);
+            const workdays = getWorkingDays(startDate, deadline);
+            const schedule = calculateSchedule(hl, tm, bank, workdays, stdDay, aggression, dayPeriod, morningLogged);
+
             const netRemaining = Math.max(0, (tm - hl) - bank);
 
             document.getElementById('statRemaining').innerText = `${netRemaining.toFixed(1)}h`;
-            document.getElementById('statDays').innerText = `${workdays.toFixed(1)}`;
+            document.getElementById('statDays').innerText = `${workdays}`;
             const [dlYear, dlMonth, dlDay] = deadline.toISOString().split('T')[0].split('-');
-            
-            document.getElementById('statDeadline').innerText = currentLang === 'en-us' 
-                ? `${dlMonth}/${dlDay}/${dlYear}` 
+
+            document.getElementById('statDeadline').innerText = currentLang === 'en-us'
+                ? `${dlMonth}/${dlDay}/${dlYear}`
                 : `${dlDay}/${dlMonth}/${dlYear}`;
 
             const tbody = document.getElementById('scheduleTable');
@@ -673,17 +710,17 @@
 
                 const [year, month, day] = currDate.toISOString().split('T')[0].split('-');
                 const dateStr = currentLang === 'en-us' ? `${month}/${day}/${year}` : `${day}/${month}/${year}`;
-                const tag = (idx === 0 && isMiddle) ? `<span class="badge">${t.badgeMiddle}</span>` : '';
 
-                const timeSuggestion = calculateSuggestedTimes(hrs, timeConfig);
+                const isFirstDayMiddle = (dayPeriod === 'middle' && idx === 0);
+                const timeSuggestion = calculateSuggestedTimes(hrs, timeConfig, isFirstDayMiddle);
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${t.dayPrefix} ${String(idx + 1).padStart(2, '0')}${tag}</td>
-                    <td>${dateStr}</td>
-                    <td>${h}h ${String(m).padStart(2, '0')}m (${hrs.toFixed(2)})</td>
-                    <td>${timeSuggestion}</td>
-                `;
+                <td>${t.dayPrefix} ${String(idx + 1).padStart(2, '0')}</td>
+                <td>${dateStr}</td>
+                <td>${h}h ${String(m).padStart(2, '0')}m (${hrs.toFixed(2)})</td>
+                <td>${timeSuggestion}</td>
+            `;
                 tbody.appendChild(tr);
                 currDate.setDate(currDate.getDate() + 1);
             });
@@ -693,8 +730,9 @@
 
         function updateUrlParams() {
             const params = new URLSearchParams();
-            ['HL', 'TM', 'bank', 'aggression', 'workday', 'day_period', 'work_start', 'lunch_start', 'lunch_duration'].forEach(id => {
-                params.set(id, document.getElementById(id).value);
+            ['HL', 'TM', 'bank', 'aggression', 'workday', 'day_period', 'morning_logged', 'afternoon_return', 'work_start', 'lunch_start', 'lunch_duration'].forEach(id => {
+                const elem = document.getElementById(id);
+                if (elem) params.set(id, elem.value);
             });
             params.set('lang', currentLang);
             window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
@@ -702,9 +740,10 @@
 
         function loadParamsFromUrl() {
             const params = new URLSearchParams(window.location.search);
-            ['HL', 'TM', 'bank', 'aggression', 'workday', 'day_period', 'work_start', 'lunch_start', 'lunch_duration'].forEach(id => {
-                if (params.has(id)) {
-                    document.getElementById(id).value = params.get(id);
+            ['HL', 'TM', 'bank', 'aggression', 'workday', 'day_period', 'morning_logged', 'afternoon_return', 'work_start', 'lunch_start', 'lunch_duration'].forEach(id => {
+                const elem = document.getElementById(id);
+                if (elem && params.has(id)) {
+                    elem.value = params.get(id);
                 }
             });
 
@@ -734,6 +773,8 @@
             document.getElementById('aggression').value = 0.3;
             document.getElementById('workday').value = 8;
             document.getElementById('day_period').value = 'start';
+            document.getElementById('morning_logged').value = 0;
+            document.getElementById('afternoon_return').value = '13:00';
             document.getElementById('work_start').value = '';
             document.getElementById('lunch_start').value = '12:00';
             document.getElementById('lunch_duration').value = '60';
@@ -743,6 +784,8 @@
         document.querySelectorAll('#scheduleForm input, #scheduleForm select').forEach(elem => {
             elem.addEventListener('input', runCalculation);
         });
+
+        document.getElementById('day_period').addEventListener('change', runCalculation);
 
         window.addEventListener('DOMContentLoaded', () => {
             loadParamsFromUrl();
