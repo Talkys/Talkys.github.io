@@ -15,6 +15,7 @@
             --primary-hover: #ebebeb;
             --border: #555555;
             --accent: #3b3b3b;
+            --holiday-color: #ef4444;
         }
 
         * {
@@ -155,6 +156,57 @@
             margin: 1.5rem 0 0.75rem 0;
             padding-top: 1rem;
             border-top: 1px dashed var(--border);
+        }
+
+        /* Calendar Styles */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            margin-top: 0.5rem;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--muted);
+            padding: 2px 0;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            background: #2a2a2a;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            transition: all 0.15s ease;
+        }
+
+        .calendar-day:hover:not(.empty):not(.weekend) {
+            border-color: var(--primary);
+        }
+
+        .calendar-day.empty {
+            background: transparent;
+            cursor: default;
+        }
+
+        .calendar-day.weekend {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background: #181818;
+        }
+
+        .calendar-day.holiday {
+            background: var(--holiday-color);
+            color: #ffffff;
+            font-weight: 700;
         }
 
         .stats-grid {
@@ -356,6 +408,11 @@
                             </div>
                         </div>
 
+                        <div class="section-title" data-i18n="titleHolidays">Feriados do Mês</div>
+                        <div class="form-group">
+                            <div class="calendar-grid" id="calendarGrid"></div>
+                        </div>
+
                         <div class="section-title" data-i18n="titleScheduleAdjust">Ajustes de Horário</div>
 
                         <div class="form-group" id="grp_work_start">
@@ -436,6 +493,7 @@
                 optMiddle: "Meio (Horas da manhã lançadas)",
                 lblMorningLogged: "Horas lançadas hoje de manhã",
                 lblAfternoonReturn: "Retorno da tarde",
+                titleHolidays: "Feriados do Mês",
                 titleScheduleAdjust: "Ajustes de Horário",
                 lblWorkStart: "Início da jornada",
                 lblLunchStart: "Início do almoço",
@@ -452,7 +510,8 @@
                 thHours: "Horas",
                 thSchedule: "Sugestão de Horário",
                 toastCopied: "Link copiado para a área de transferência!",
-                dayPrefix: "Dia"
+                dayPrefix: "Dia",
+                daysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"]
             },
             'en-us': {
                 appTitle: "Work Optimizer",
@@ -469,6 +528,7 @@
                 optMiddle: "Middle (Morning hours logged)",
                 lblMorningLogged: "Morning hours logged today",
                 lblAfternoonReturn: "Afternoon return time",
+                titleHolidays: "Month Holidays",
                 titleScheduleAdjust: "Schedule Adjustments",
                 lblWorkStart: "Work Start Time",
                 lblLunchStart: "Lunch Start Time",
@@ -485,11 +545,13 @@
                 thHours: "Hours",
                 thSchedule: "Suggested Schedule",
                 toastCopied: "Link copied to clipboard!",
-                dayPrefix: "Day"
+                dayPrefix: "Day",
+                daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
             }
         };
 
         let currentLang = 'pt-br';
+        let selectedHolidays = new Set();
 
         function setLanguage(lang) {
             currentLang = translations[lang] ? lang : 'pt-br';
@@ -505,6 +567,7 @@
             });
 
             document.title = translations[currentLang].appTitle;
+            renderCalendar();
             runCalculation();
         }
 
@@ -527,12 +590,86 @@
             return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
         }
 
+        function getCalculatedStartDate() {
+            const dayPeriod = document.getElementById('day_period').value;
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            let startDate = new Date(today);
+            if (dayPeriod === 'end') {
+                startDate.setDate(startDate.getDate() + 1);
+            }
+            return startDate;
+        }
+
+        function renderCalendar() {
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '';
+
+            const t = translations[currentLang];
+            t.daysShort.forEach(dayName => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.innerText = dayName;
+                calendarGrid.appendChild(header);
+            });
+
+            const startDate = getCalculatedStartDate();
+            const year = startDate.getFullYear();
+            const month = startDate.getMonth();
+
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 0; i < firstDayIndex; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day empty';
+                calendarGrid.appendChild(empty);
+            }
+
+            for (let d = 1; d <= daysInMonth; d++) {
+                const cellDate = new Date(year, month, d);
+                const dayOfWeek = cellDate.getDay();
+                const isWeekend = (dayOfWeek === 0 || dayOfWeek === 6);
+                const isoString = cellDate.toISOString().split('T')[0];
+
+                const dayCell = document.createElement('div');
+                dayCell.className = 'calendar-day';
+                dayCell.innerText = d;
+
+                if (isWeekend) {
+                    dayCell.classList.add('weekend');
+                } else {
+                    if (selectedHolidays.has(isoString)) {
+                        dayCell.classList.add('holiday');
+                    }
+                    dayCell.onclick = () => toggleHoliday(isoString);
+                }
+
+                calendarGrid.appendChild(dayCell);
+            }
+        }
+
+        function toggleHoliday(isoString) {
+            if (selectedHolidays.has(isoString)) {
+                selectedHolidays.delete(isoString);
+            } else {
+                selectedHolidays.add(isoString);
+            }
+            renderCalendar();
+            runCalculation();
+        }
+
+        function isHoliday(dateObj) {
+            const iso = dateObj.toISOString().split('T')[0];
+            return selectedHolidays.has(iso);
+        }
+
         function calculateSuggestedTimes(dailyHours, config, isFirstDayMiddle = false) {
             if (dailyHours <= 0) return "-";
 
             const totalMinutes = Math.round(dailyHours * 60);
 
-            // Handle mid-day afternoon-only schedule for Day 1
             if (isFirstDayMiddle && config.afternoonReturn !== null) {
                 const entry2 = config.afternoonReturn;
                 const exit2 = entry2 + totalMinutes;
@@ -593,7 +730,7 @@
 
             while (curr <= endDate) {
                 const dayOfWeek = curr.getDay();
-                if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+                if (dayOfWeek !== 0 && dayOfWeek !== 6 && !isHoliday(curr)) {
                     days += 1;
                 }
                 curr.setDate(curr.getDate() + 1);
@@ -608,12 +745,9 @@
             let schedule = [];
 
             if (dayPeriod === 'middle') {
-                // 1. Calculate afternoon hours left for Day 1
-                // Expected full target for Day 1 minus what was already logged in the morning
                 const day1AfternoonTarget = Math.max(0, stdDay - morningLogged);
                 schedule.push(Number(day1AfternoonTarget.toFixed(2)));
 
-                // 2. Distribute the remaining hours across remaining FUTURE days
                 let hoursLeftForFuture = Math.max(0, netRemaining - day1AfternoonTarget);
                 const futureDays = totalWorkdays - 1;
 
@@ -631,7 +765,6 @@
                     hoursLeftForFuture -= allocated;
                 }
             } else {
-                // Normal distribution for 'start' or 'end' contexts
                 let hoursLeft = netRemaining;
                 for (let i = 0; i < totalWorkdays; i++) {
                     const daysLeft = totalWorkdays - i;
@@ -669,13 +802,7 @@
 
             const timeConfig = { workStart, lunchStart, lunchDuration, afternoonReturn };
 
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-
-            let startDate = new Date(today);
-            if (dayPeriod === 'end') {
-                startDate.setDate(startDate.getDate() + 1);
-            }
+            const startDate = getCalculatedStartDate();
 
             const year = startDate.getFullYear();
             const month = startDate.getMonth();
@@ -700,7 +827,7 @@
             const t = translations[currentLang];
             let currDate = new Date(startDate);
             schedule.forEach((hrs, idx) => {
-                while (currDate.getDay() === 0 || currDate.getDay() === 6) {
+                while (currDate.getDay() === 0 || currDate.getDay() === 6 || isHoliday(currDate)) {
                     currDate.setDate(currDate.getDate() + 1);
                 }
 
@@ -735,6 +862,9 @@
                 if (elem) params.set(id, elem.value);
             });
             params.set('lang', currentLang);
+            if (selectedHolidays.size > 0) {
+                params.set('holidays', Array.from(selectedHolidays).join(','));
+            }
             window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
         }
 
@@ -746,6 +876,11 @@
                     elem.value = params.get(id);
                 }
             });
+
+            if (params.has('holidays')) {
+                const hList = params.get('holidays').split(',');
+                selectedHolidays = new Set(hList.filter(Boolean));
+            }
 
             const langParam = params.get('lang') || localStorage.getItem('pref_lang') || 'pt-br';
             setLanguage(langParam);
@@ -778,6 +913,8 @@
             document.getElementById('work_start').value = '';
             document.getElementById('lunch_start').value = '12:00';
             document.getElementById('lunch_duration').value = '60';
+            selectedHolidays.clear();
+            renderCalendar();
             runCalculation();
         }
 
@@ -785,7 +922,10 @@
             elem.addEventListener('input', runCalculation);
         });
 
-        document.getElementById('day_period').addEventListener('change', runCalculation);
+        document.getElementById('day_period').addEventListener('change', () => {
+            renderCalendar();
+            runCalculation();
+        });
 
         window.addEventListener('DOMContentLoaded', () => {
             loadParamsFromUrl();
