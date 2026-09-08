@@ -739,46 +739,46 @@
         }
 
         function calculateSchedule(hl, tm, bank, totalWorkdays, stdDay, aggression, dayPeriod, morningLogged) {
+            // netRemaining é o que falta lançar no sistema (TM - HL - Banco)
             const netRemaining = (tm - hl) - bank;
-            if (totalWorkdays <= 0 || netRemaining <= 0) return [];
+
+            // Se não há dias ou nada a compensar (e não estamos no meio de um dia), retorna vazio
+            if (totalWorkdays <= 0 || (netRemaining <= 0 && dayPeriod !== 'middle')) return [];
 
             let schedule = [];
 
-            if (dayPeriod === 'middle') {
-                const day1AfternoonTarget = Math.max(0, stdDay - morningLogged);
-                schedule.push(Number(day1AfternoonTarget.toFixed(2)));
+            // Para o cálculo de distribuição ser justo, se estivermos no "Meio", 
+            // calculamos como se o dia de hoje fosse um dia cheio e depois subtraímos o que já foi feito.
+            let hoursToDistribute = (dayPeriod === 'middle') ? (netRemaining + morningLogged) : netRemaining;
+            let hoursLeft = hoursToDistribute;
 
-                let hoursLeftForFuture = Math.max(0, netRemaining - day1AfternoonTarget);
-                const futureDays = totalWorkdays - 1;
+            for (let i = 0; i < totalWorkdays; i++) {
+                const daysLeft = totalWorkdays - i;
+                const evenRate = hoursLeft / daysLeft;
 
-                for (let i = 0; i < futureDays; i++) {
-                    const daysLeft = futureDays - i;
-                    const evenRate = daysLeft > 0 ? hoursLeftForFuture / daysLeft : hoursLeftForFuture;
-                    const targetFullDay = stdDay + (evenRate - stdDay) * (1 + aggression);
-                    const maxDailyCap = stdDay * 1.5;
+                // Aplica a agressividade sobre a diferença entre a taxa ideal e a jornada padrão
+                const targetFullDay = stdDay + (evenRate - stdDay) * (1 + aggression);
+                const maxDailyCap = stdDay * 1.5; // Limite de 50% extra para não saturar um dia só
 
-                    let allocated = Math.min(maxDailyCap, Math.max(0.0, targetFullDay));
-                    if (daysLeft <= 1.0) allocated = Math.max(0.0, hoursLeftForFuture);
+                let allocated = Math.min(maxDailyCap, Math.max(0.0, targetFullDay));
 
-                    allocated = Math.min(allocated, hoursLeftForFuture);
-                    schedule.push(Number(allocated.toFixed(2)));
-                    hoursLeftForFuture -= allocated;
-                }
-            } else {
-                let hoursLeft = netRemaining;
-                for (let i = 0; i < totalWorkdays; i++) {
-                    const daysLeft = totalWorkdays - i;
-                    const evenRate = daysLeft > 0 ? hoursLeft / daysLeft : hoursLeft;
-                    const targetFullDay = stdDay + (evenRate - stdDay) * (1 + aggression);
-                    const maxDailyCap = stdDay * 1.5;
+                // No último dia, garante que zeramos o saldo
+                if (daysLeft <= 1.0) allocated = Math.max(0.0, hoursLeft);
+                allocated = Math.min(allocated, hoursLeft);
 
-                    let allocated = Math.min(maxDailyCap, Math.max(0.0, targetFullDay));
-                    if (daysLeft <= 1.0) allocated = Math.max(0.0, hoursLeft);
+                let finalDayAllocation = allocated;
 
-                    allocated = Math.min(allocated, hoursLeft);
-                    schedule.push(Number(allocated.toFixed(2)));
+                // Ajuste específico para o dia de hoje se estiver no contexto "Meio"
+                if (i === 0 && dayPeriod === 'middle') {
+                    // O que falta trabalhar hoje é o Alvo do Dia - O que já foi trabalhado
+                    finalDayAllocation = Math.max(0, allocated - morningLogged);
+                    // Atualiza o hoursLeft real (o que falta lançar de fato nos próximos dias)
+                    hoursLeft -= (finalDayAllocation + morningLogged);
+                } else {
                     hoursLeft -= allocated;
                 }
+
+                schedule.push(Number(finalDayAllocation.toFixed(2)));
             }
 
             return schedule;
