@@ -1,0 +1,46 @@
+[
+  {
+    "title": "First Post",
+    "date": "2025-04-18",
+    "readTime": "1 min read",
+    "description": "This is just a quick first post to make sure everything’s up and running. I’ll be using this space to share project updates, technical deep dives, and thoughts on working with microcontrollers, real-time systems, and low-level code."
+  },
+  {
+    "title": "In the beginning",
+    "date": "2025-04-19",
+    "readTime": "5 min read",
+    "description": "Before diving into anything barely practical, we need to start with the basics. The go-to basic embedded project is the blinking LED, but I don't like something so simple."
+  },
+  {
+    "title": "State Machine",
+    "date": "2025-04-21",
+    "readTime": "5 min read",
+    "description": "My project today is just a little experiment on state processing. Just a green LED with a button that cycles it’s levels from 0 to 3."
+  },
+  {
+    "title": "Temperature Sensor",
+    "date": "2025-04-23",
+    "readTime": "6 min read",
+    "description": "Today’s project is a temperature monitor built using a DHT22 sensor and an RGB LED as output. I didn’t have the motivation to fine-tune the intervals or calibrate the sensor data, so the output isn’t particularly impressive."
+  },
+  {
+    "title": "Smoke Detector",
+    "date": "2025-04-26",
+    "readTime": "10 min read",
+    "description": "Today's project is a smoke detector with an online interface. Much simpler than I expected, yet still quite complex."
+  },
+  {
+    "title": "Building a Bitboard Chess Engine in C++",
+    "url": "/blog/post?id=the_chess_bot",
+    "date": "2026-04-12",
+    "readTime": "20 min read",
+    "description": "Since my last post, I’ve been deep in the weeds developing a chess bot specifically for the ESP32. This project turned out to be far more challenging than I anticipated, but the hurdles only made the process more interesting."
+  },
+  {
+    "title": "Building TracerouteUI: From Frozen Maps to Real-Time Packet Tracing",
+    "url": "/blog/post?id=traceroute",
+    "date": "2026-09-28",
+    "readTime": "20 min read",
+    "description": "Every network engineer or sysadmin is familiar with traceroute. It’s simple, dependable, and gives you raw CLI output fast. But standard CLI tools don't visually show where in the world your packets are actually traveling."
+  }
+]

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Tallys Assis</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="/bg.js"></script>
+</head>
+
+<body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-zinc-800 selection:text-white font-sans min-h-screen flex flex-col">
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-50 w-full border-b border-zinc-900 bg-zinc-950/80 backdrop-blur-md">
+        <div class="mx-auto flex max-w-6xl items-center justify-between p-4 md:px-8">
+            <a href="/index.html"
+                class="text-xs sm:text-sm font-semibold tracking-wider hover:text-zinc-400 transition-colors whitespace-nowrap">
+                Tallys Assis
+            </a>
+            <nav class="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm text-zinc-400">
+                <a href="/about.html" class="hover:text-zinc-100 transition-colors">About</a>
+                <a href="/projects.html" class="hover:text-zinc-100 transition-colors">Projects</a>
+                <a href="/experience.html" class="hover:text-zinc-100 transition-colors">Experience</a>
+                <a href="/blog/home.html" class="text-zinc-100 font-medium">Blog</a>
+                <a href="/contact.html" class="hover:text-zinc-100 transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content & Sidebar Layout -->
+    <main class="relative z-10 mx-auto max-w-6xl w-full px-4 py-8 md:px-8 md:py-16 flex-1">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 items-start">
+            
+            <!-- Main Content Area: Latest Posts List -->
+            <section class="lg:col-span-3 space-y-8 max-w-3xl">
+                
+                <div class="space-y-3 border-b border-zinc-900 pb-6">
+                    <h1 class="text-3xl font-light tracking-tight sm:text-4xl text-zinc-100">
+                        Dev Blog
+                    </h1>
+                    <p class="text-sm text-zinc-400 leading-relaxed">
+                        Thoughts on system architecture, embedded computing, performance optimization, and general development.
+                    </p>
+                </div>
+
+                <!-- Container where posts from JSON will be injected -->
+                <div id="posts-list" class="space-y-6">
+                    <!-- Loading Skeleton Placeholder -->
+                    <div class="animate-pulse space-y-4">
+                        <div class="h-4 bg-zinc-900 rounded w-1/4"></div>
+                        <div class="h-6 bg-zinc-900 rounded w-3/4"></div>
+                        <div class="h-12 bg-zinc-900 rounded w-full"></div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Right Sidebar: Posts by Date Tree -->
+            <aside class="lg:col-span-1 rounded-xl border border-zinc-900 bg-zinc-900/20 p-5 space-y-4 sticky top-24">
+                <div class="flex items-center justify-between border-b border-zinc-800/60 pb-3">
+                    <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+                        Archive Tree
+                    </h2>
+                    <span id="post-count" class="text-[10px] font-mono text-zinc-500 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800">
+                        Loading...
+                    </span>
+                </div>
+
+                <!-- Tree Container -->
+                <div id="posts-tree" class="space-y-3 text-xs text-zinc-400">
+                    <!-- Tree rendered via JS -->
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 border-t border-zinc-900 bg-zinc-950 py-8 mt-auto">
+        <div class="mx-auto max-w-6xl px-4 text-center text-xs text-zinc-600 md:px-8">
+            <p>&copy; 2026 Tallys Assis. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JSON Fetch & Dynamic Rendering -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const endpoint = "/blog/posts.json";
+
+            // Fallback dataset if posts.json isn't present locally
+            const fallbackPosts = [];
+
+            fetch(endpoint)
+                .then(res => {
+                    if (!res.ok) throw new Error("Unable to fetch JSON");
+                    return res.json();
+                })
+                .then(data => {
+                    renderMainPostsList(data);
+                    renderTree(data);
+                })
+                .catch(err => {
+                    console.warn("Using fallback post data:", err);
+                    renderMainPostsList(fallbackPosts);
+                    renderTree(fallbackPosts);
+                });
+
+            // Format YYYY-MM-DD into "MMM DD, YYYY"
+            function formatDate(dateStr) {
+                const date = Temporal.PlainDate.from(dateStr);
+                return date.toLocaleString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            }
+
+            // Render Main Feed List
+            function renderMainPostsList(posts) {
+                const listContainer = document.getElementById("posts-list");
+                
+                if (!posts || posts.length === 0) {
+                    listContainer.innerHTML = '<p class="text-zinc-500 text-sm">No posts published yet.</p>';
+                    return;
+                }
+
+                // Sort posts newest first
+                const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                let html = '';
+                sorted.forEach(post => {
+                    html += `
+                        <article class="group relative rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 hover:border-zinc-800 hover:bg-zinc-900/40 transition-all duration-300">
+                            <div class="flex items-center gap-3 text-xs font-mono text-zinc-500 mb-3">
+                                <time datetime="${post.date}">${formatDate(post.date)}</time>
+                                ${post.readTime ? `<span>•</span><span>${post.readTime}</span>` : ''}
+                            </div>
+                            
+                            <h2 class="text-xl font-medium text-zinc-200 group-hover:text-zinc-100 transition-colors">
+                                <a href="${post.url}" class="focus:outline-none">
+                                    <span class="absolute inset-0" aria-hidden="true"></span>
+                                    ${post.title}
+                                </a>
+                            </h2>
+
+                            ${post.description ? `
+                                <p class="mt-3 text-sm text-zinc-400 leading-relaxed line-clamp-2">
+                                    ${post.description}
+                                </p>
+                            ` : ''}
+
+                            <div class="mt-4 flex items-center gap-1 text-xs font-medium text-zinc-400 group-hover:text-zinc-200 transition-colors">
+                                <span>Read article</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                </svg>
+                            </div>
+                        </article>
+                    `;
+                });
+
+                listContainer.innerHTML = html;
+            }
+
+            // Render Tree View Sidebar
+            function renderTree(posts) {
+                const container = document.getElementById("posts-tree");
+                const countBadge = document.getElementById("post-count");
+
+                if (!posts || posts.length === 0) {
+                    container.innerHTML = '<p class="text-zinc-600">No posts.</p>';
+                    return;
+                }
+
+                countBadge.textContent = `${posts.length} posts`;
+
+                // Group posts by Year -> Month
+                const tree = {};
+                posts.forEach(post => {
+                    const d = new Date(post.date);
+                    const year = d.getFullYear();
+                    const month = d.toLocaleString('en-US', { month: 'long' });
+
+                    if (!tree[year]) tree[year] = {};
+                    if (!tree[year][month]) tree[year][month] = [];
+
+                    tree[year][month].push(post);
+                });
+
+                const sortedYears = Object.keys(tree).sort((a, b) => b - a);
+                let html = '';
+
+                sortedYears.forEach(year => {
+                    html += `
+                        <details class="group/year" open>
+                            <summary class="cursor-pointer select-none font-semibold text-zinc-300 hover:text-zinc-100 flex items-center gap-1 py-1">
+                                <svg class="w-3 h-3 transition-transform group-open/year:rotate-90 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="9 5l7 7-7 7"></path>
+                                </svg>
+                                ${year}
+                            </summary>
+                            <div class="pl-3 border-l border-zinc-800 ml-1.5 space-y-2 mt-1">
+                    `;
+
+                    Object.keys(tree[year]).forEach(month => {
+                        html += `
+                            <details class="group/month" open>
+                                <summary class="cursor-pointer select-none font-medium text-zinc-300 hover:text-zinc-200 flex items-center gap-1 py-0.5">
+                                    <svg class="w-2.5 h-2.5 transition-transform group-open/month:rotate-90 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="9 5l7 7-7 7"></path>
+                                    </svg>
+                                    ${month}
+                                </summary>
+                                <ul class="pl-3 border-l border-zinc-800/60 ml-1 mt-1 space-y-1">
+                        `;
+
+                        tree[year][month].forEach(p => {
+                            html += `
+                                <li>
+                                    <a href="${p.url}" 
+                                       title="${p.title}" 
+                                       class="block truncate pl-2 py-0.5 text-zinc-400 hover:text-zinc-200 transition-colors">
+                                        ${p.title}
+                                    </a>
+                                </li>
+                            `;
+                        });
+
+                        html += `
+                                </ul>
+                            </details>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </details>
+                    `;
+                });
+
+                container.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+
+</html>
