@@ -96,6 +96,8 @@ Building TracerouteUI reinforced a valuable lesson about project scope and tool 
 
 The original PyQt script wasn't a waste—it proved the concept and highlighted the exact friction points (blocking execution, rigid map tools) that informed the redesign. At the end of the day, a visual traceroute tool is meant to be a fun, visual way to explore the web's physical backbone. For deep troubleshooting, the standard CLI `traceroute` is still king. Realizing that kept me from over-engineering unnecessary details and allowed me to focus on making a clean, responsive app.
 
+![Circuit](/blog/assets/img/traceroute.png)
+
 ---
 
 ### Stack Overview
