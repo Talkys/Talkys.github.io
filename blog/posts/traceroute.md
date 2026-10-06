@@ -106,4 +106,4 @@ The original PyQt script wasn't a waste—it proved the concept and highlighted 
 * **Probing Mechanism:** Native Linux `ping` (TTL manipulation)
 * **Frontend:** Leaflet.js, HTML5/JS
 * **GeoIP:** `ip-api` with persistent local caching
-* **Repository:** [GitHub - Talkys/TracerouteUI](https://github.com/Talkys/TracerouteUI?utm_source=gemini)
+* **Repository:** [GitHub - Talkys/TracerouteUI](https://github.com/Talkys/TracerouteUI)
