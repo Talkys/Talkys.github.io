@@ -41,7 +41,7 @@ void loop() {
 
 Let’s see it working:
 
-![Circuit](/blog/assets/img/blink2.webp)
+![Circuit](/blog/assets/img/blink2.avif)
 
 Yeah, not that impressive, but I should note that using the delay as a debouncing tool was a smart move. But I really need a better debouncing setup.
 
