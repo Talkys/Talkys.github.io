@@ -11,7 +11,7 @@ github_desc: The full source code is available on GitHub.
 
 Every network engineer or sysadmin is familiar with `traceroute`. It’s simple, dependable, and gives you raw CLI output fast. But standard CLI tools don't visually show *where* in the world your packets are actually traveling.
 
-I set out to build a visual tracerouting tool specifically tailored for Linux users—one that required zero root/`sudo` privileges and provided an interactive map. Getting there, however, required rethinking my entire approach—moving away from a monolithic desktop app toward a modular, web-based, real-time architecture.
+I set out to build a visual tracerouting tool specifically tailored for Linux users-one that required zero root/`sudo` privileges and provided an interactive map. Getting there, however, required rethinking my entire approach-moving away from a monolithic desktop app toward a modular, web-based, real-time architecture.
 
 Here is the story of how **TracerouteUI** evolved from a frozen PyQt map generator into a responsive, real-time visualization tool.
 
@@ -47,7 +47,7 @@ In Linux, sending raw ICMP packets directly via sockets requires `CAP_NET_RAW` o
 
 To keep the tool lightweight and accessible without asking for elevated privileges, I used a native binary trick: **calling system `ping` with custom Time-To-Live (TTL) values**.
 
-Because `ping` is configured on most Linux distros with setuid/capabilities to allow raw ICMP without elevated user rights, executing single-hop probes via `ping -t <ttl>` allowed the app to step down the path one hop at a time—strictly as a standard user.
+Because `ping` is configured on most Linux distros with setuid/capabilities to allow raw ICMP without elevated user rights, executing single-hop probes via `ping -t <ttl>` allowed the app to step down the path one hop at a time-strictly as a standard user.
 
 ```
 Hop 1: ping -t 1 target.com  ──>  Returns Gateway / Intermediate Router
@@ -94,7 +94,7 @@ For resolving IP addresses to geographic coordinates, I integrated the `ip-api.c
 
 Building TracerouteUI reinforced a valuable lesson about project scope and tool design: **it's perfectly fine to start with the simplest solution first**.
 
-The original PyQt script wasn't a waste—it proved the concept and highlighted the exact friction points (blocking execution, rigid map tools) that informed the redesign. At the end of the day, a visual traceroute tool is meant to be a fun, visual way to explore the web's physical backbone. For deep troubleshooting, the standard CLI `traceroute` is still king. Realizing that kept me from over-engineering unnecessary details and allowed me to focus on making a clean, responsive app.
+The original PyQt script wasn't a waste-it proved the concept and highlighted the exact friction points (blocking execution, rigid map tools) that informed the redesign. At the end of the day, a visual traceroute tool is meant to be a fun, visual way to explore the web's physical backbone. For deep troubleshooting, the standard CLI `traceroute` is still king. Realizing that kept me from over-engineering unnecessary details and allowed me to focus on making a clean, responsive app.
 
 ![Circuit](/blog/assets/img/traceroute.png)
 
