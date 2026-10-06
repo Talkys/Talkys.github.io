@@ -7,8 +7,6 @@
     <title>About</title>
     <!-- Tailwind CSS v4 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Linkedin Badge -->
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
     <script src="/bg.js"></script>
 </head>
@@ -56,11 +54,39 @@
                     can push the technology.
                 </p>
             </div>
-            <div class="w-full lg:w-auto flex justify-center">
-                <div class="badge-base LI-profile-badge shrink-0" data-locale="pt_BR" data-size="medium"
-                    data-theme="dark" data-type="VERTICAL" data-vanity="tallys-assis-271631197" data-version="v1">
-                    <a class="badge-base__link LI-simple-link"
-                        href="https://br.linkedin.com/in/tallys-assis-271631197?trk=profile-badge"></a>
+            <div class="w-full lg:w-auto flex justify-center shrink-0">
+                <div
+                    class="w-full max-w-xs rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 backdrop-blur-sm shadow-xl flex flex-col items-center text-center transition-all duration-300 hover:border-zinc-700">
+
+                    <!-- Avatar / Picture (Update src with your photo path, or keep the initial placeholder) -->
+                    <div class="relative mb-4">
+                        <img class="h-24 w-24 rounded-full object-cover border-2 border-zinc-700 shadow-md"
+                            src="img/photos/perfil.jpeg" alt="Tallys Assis" />
+                        <!-- Online / Active dot -->
+                        <span
+                            class="absolute bottom-1 right-1 h-3.5 w-3.5 rounded-full bg-emerald-500 ring-2 ring-zinc-900"
+                            title="Active"></span>
+                    </div>
+
+                    <!-- Name & Details -->
+                    <h3 class="text-lg font-medium text-zinc-100">Tallys Assis</h3>
+                    <p class="text-xs font-medium text-zinc-400 mt-0.5">Software Engineer</p>
+                    <p class="text-xs text-zinc-500 mt-1">B.S. in Computer Science · PUC Minas</p>
+
+                    <!-- Divider -->
+                    <div class="w-full border-t border-zinc-800 my-4"></div>
+
+                    <!-- Action / LinkedIn Button -->
+                    <a href="https://www.linkedin.com/in/tallys-assis-271631197" target="_blank"
+                        rel="noopener noreferrer"
+                        class="group inline-flex w-full items-center justify-center gap-2 rounded-lg bg-zinc-800 px-4 py-2 text-xs font-medium text-zinc-200 transition-colors hover:bg-zinc-700 hover:text-white">
+                        <svg class="h-4 w-4 fill-current text-zinc-400 group-hover:text-blue-400 transition-colors"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        Connect on LinkedIn
+                    </a>
                 </div>
             </div>
         </div>
