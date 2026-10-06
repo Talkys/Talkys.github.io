@@ -85,7 +85,7 @@ To avoid depending on external, rate-limited, or tile-restricted cloud map APIs,
 
 For resolving IP addresses to geographic coordinates, I integrated the `ip-api.com` service. To avoid abusing an open API across repeated traces:
 
-* **Local SQLite Caching:** IPs and locations are cached persistently. Re-visited intermediate hops pull straight from the database.
+* **Local Caching:** IPs and locations are cached persistently. Re-visited intermediate hops pull straight from the file.
 * **Edge Case Handling:** Private IPs (`10.x.x.x`, `192.168.x.x`) and unresolvable nodes are gracefully skipped, with the trace defaulting to the user's public IP as the starting node.
 
 ---
