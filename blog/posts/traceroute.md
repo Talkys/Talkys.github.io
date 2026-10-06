@@ -1,7 +1,7 @@
 ---
 title: Building TracerouteUI - From Frozen Maps to Real-Time Packet Tracing
 date: 2026-09-28
-category: Embedded development
+category: Web development
 back_link: /blog/home.html
 github_url: https://github.com/Talkys/TracerouteUI
 github_title: Interested in the code?
