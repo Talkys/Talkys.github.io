@@ -50,7 +50,7 @@ void loop()
 
 Simple enough — now let’s see it in action.
 
-![Circuit](/blog/assets/img/blink1.webp)
+![Circuit](/blog/assets/img/blink1.avif)
 
 And it works!
 
