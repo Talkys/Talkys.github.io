@@ -102,7 +102,7 @@ The original PyQt script wasn't a waste—it proved the concept and highlighted 
 
 ### Stack Overview
 
-* **Backend:** Python 3, FastAPI, SQLite
+* **Backend:** Python 3, FastAPI
 * **Probing Mechanism:** Native Linux `ping` (TTL manipulation)
 * **Frontend:** Leaflet.js, HTML5/JS
 * **GeoIP:** `ip-api` with persistent local caching
