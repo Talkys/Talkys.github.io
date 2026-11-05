@@ -1,51 +1,58 @@
 [
   {
-    "title": "First Post",
-    "date": "2025-04-18",
-    "url": "/blog/post?id=first",
-    "readTime": "1 min read",
-    "description": "This is just a quick first post to make sure everything’s up and running. I’ll be using this space to share project updates, technical deep dives, and thoughts on working with microcontrollers, real-time systems, and low-level code."
-  },
-  {
     "title": "In the beginning",
     "date": "2025-04-19",
     "url": "/blog/post?id=beginning",
-    "readTime": "5 min read",
-    "description": "Before diving into anything barely practical, we need to start with the basics. The go-to basic embedded project is the blinking LED, but I don't like something so simple."
+    "readTime": "1 min read",
+    "description": "Before diving into anything barely practical, we need to start with the basics. The go-to basic embedded project is the blinking LED, but I don't like something so simple. Instead, my first project will be a LED blinking device that uses two buttons to select a power blink level while pressed.",
+    "category": "Embedded"
+  },
+  {
+    "title": "First Post",
+    "date": "2025-04-19",
+    "url": "/blog/post?id=first",
+    "readTime": "1 min read",
+    "description": "This is just a quick first post to make sure everything’s up and running. I’ll be using this space to share project updates, technical deep dives, and thoughts on working with microcontrollers, real-time systems, and low-level code.",
+    "category": "General"
   },
   {
     "title": "State Machine",
     "date": "2025-04-21",
     "url": "/blog/post?id=state_machine",
-    "readTime": "5 min read",
-    "description": "My project today is just a little experiment on state processing. Just a green LED with a button that cycles it’s levels from 0 to 3."
+    "readTime": "1 min read",
+    "description": "My project today is just a little experiment on state processing. Just a green LED with a button that cycles it’s levels from 0 to 3.",
+    "category": "Embedded"
   },
   {
     "title": "Temperature Sensor",
     "date": "2025-04-23",
     "url": "/blog/post?id=temperature",
-    "readTime": "6 min read",
-    "description": "Today’s project is a temperature monitor built using a DHT22 sensor and an RGB LED as output. I didn’t have the motivation to fine-tune the intervals or calibrate the sensor data, so the output isn’t particularly impressive."
+    "readTime": "1 min read",
+    "description": "Today’s project is a temperature monitor built using a DHT22 sensor and an RGB LED as output. I didn’t have the motivation to fine-tune the intervals or calibrate the sensor data, so the output isn’t particularly impressive. I also only had two 330Ω resistors on hand to drive the LED, so I was limited to the red-green range (with yellow in between).",
+    "category": "Embedded"
   },
   {
     "title": "Smoke Detector",
     "date": "2025-04-26",
     "url": "/blog/post?id=smoke",
-    "readTime": "10 min read",
-    "description": "Today's project is a smoke detector with an online interface. Much simpler than I expected, yet still quite complex."
+    "readTime": "1 min read",
+    "description": "Today's project is a smoke detector with an online interface. Much simpler than I expected, yet still quite complex.",
+    "category": "Embedded"
   },
   {
-    "title": "Building a Bitboard Chess Engine in C++",
-    "url": "/blog/post?id=the_chess_bot",
+    "title": "Developing a Chess Engine for the ESP32",
     "date": "2026-04-12",
-    "readTime": "20 min read",
-    "description": "Since my last post, I’ve been deep in the weeds developing a chess bot specifically for the ESP32. This project turned out to be far more challenging than I anticipated, but the hurdles only made the process more interesting."
+    "url": "/blog/post?id=the_chess_bot",
+    "readTime": "4 min read",
+    "description": "Since my last post, I’ve been deep in the weeds developing a chess bot specifically for the ESP32. This project turned out to be far more challenging than I anticipated, but the hurdles only made the process more interesting.",
+    "category": "Embedded development"
   },
   {
-    "title": "Building TracerouteUI: From Frozen Maps to Real-Time Packet Tracing",
-    "url": "/blog/post?id=traceroute",
+    "title": "Building TracerouteUI - From Frozen Maps to Real-Time Packet Tracing",
     "date": "2026-09-28",
-    "readTime": "20 min read",
-    "description": "Every network engineer or sysadmin is familiar with traceroute. It’s simple, dependable, and gives you raw CLI output fast. But standard CLI tools don't visually show where in the world your packets are actually traveling."
+    "url": "/blog/post?id=traceroute",
+    "readTime": "4 min read",
+    "description": "Every network engineer or sysadmin is familiar with traceroute. It’s simple, dependable, and gives you raw CLI output fast. But standard CLI tools don't visually show where in the world your packets are actually traveling.",
+    "category": "Web development"
   }
 ]
